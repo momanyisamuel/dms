@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>invoice</title>
+</head>
+<style>
+    body {
+        font-family: 'Lato', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+    }
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .invoice-header, .invoice--heading, .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    p {
+        margin: 0;
+    }
+    .invoice--table, .invoice--heading {
+        width: 100%;
+        border: 1px #2c2c2c solid;
+        margin-bottom: 30px;
+    }
+    th {
+        text-align: left;
+    }
+
+</style>
+<body>
+    <div class="container">
+    <div class="invoice-header">
+            <div class="invoice--logo"><img src="./templates/logo.png" alt=""></div>
+            <div><h3>INVOICE</h3></div>
+    </div>
+    <div class="invoice-body">
+        <div class="invoice--heading">
+            <div id="customer">
+                <table id="meta">
+                    <tr>
+                        <td class="meta-head">InvoiceNo</td>
+                        <td>#001</td>
+                    </tr>
+                    <tr>
+                        <td class="meta-head">Date</td>
+                        <td>August 12, 2018</td>
+                    </tr>
+                    <tr>
+                        <td class="meta-head">Branch</td>
+                        <td>Nairobi</td>
+                    </tr>
+                    <tr>
+                        <td class="meta-head">Doctor</td>
+                        <td>Dr Samuel Chweya</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="invoice--address">
+                <p>Customer Name: Mr Samuel Maingi</p>
+                <p>Covered by: APA Insurance</p>
+                <p>Membership NO: 01687493421</p>
+                <p>UHID: 2347</p>
+            </div>
+        </div>
+        <table class="invoice--table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr class="item-row">
+                    <td class="item-name"><div class="delete-wpr">Web Updates</div></td>
+                    <td class="description">Monthly web updates for</td>
+                    <td>650.00</td>
+                    <td>1</td>
+                    <td><span class="price">650.00</span></td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="2" class="blank"> </td>
+                    <td colspan="2" class="total-line">Tax</td>
+                    <td class="total-value"><div id="subtotal">65.00</div></td>
+                </tr>
+                <tr>
+      
+                    <td colspan="2" class="blank"> </td>
+                    <td colspan="2" class="total-line">Net Total</td>
+                    <td class="total-value"><div id="total">715.00</div></td>
+                </tr>
+            </tfoot>
+            
+          </table>
+    </div>
+
+    <div>
+        <p>Prepared By: Rose Doe</p>
+    </div>
+    <br><br><br>
+    <div>
+        <p>I, the (undersigned), being the patient/guardian, confirm use of the services listed on this invoice. I also confirm that i shall  be fully and severally liable for the hospital bills, if for any reason my insurance/employer declines to settle the bill amount.</p>
+    </div>
+    <br><br>
+    <div class="footer">
+        <p>Parent/Guardian Sign</p>
+        <p>Stamp</p>
+    </div>
+</div>
+</body>
+</html>

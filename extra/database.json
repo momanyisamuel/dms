@@ -1,0 +1,10 @@
+{
+        "invoiceNo" : "#56876",
+        "date":"12/08/2018",
+        "item": "Tooth removal",
+        "cost":"650.00",
+        "quantity":"1",
+        "price":"650.00",
+        "tax":"65.00",
+        "total":"715"
+}

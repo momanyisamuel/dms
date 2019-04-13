@@ -1,0 +1,28 @@
+{
+  "name": "dms",
+  "version": "1.0.0",
+  "description": "Dental Management System",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "fs-extra": "^7.0.1",
+    "handlebars": "^4.1.1",
+    "moment": "^2.24.0",
+    "mysql2": "^1.6.5",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "puppeteer": "^1.13.0",
+    "sequelize": "^5.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "Momanyi Samuel",
+  "license": "ISC"
+}
