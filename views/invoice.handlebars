@@ -1,0 +1,12 @@
+<h1>Invoice Template</h1>
+
+<div class="invoices">
+    {{#each invoice}}
+        <p>{{ invoiceno }}</p>
+        <p>{{ cost }}</p>
+        <p>{{ item }}</p>
+        <p>{{ quantity }}</p>
+    {{else}}
+        <p>No invoices available</p>
+    {{/each}}
+</div>

@@ -7,8 +7,9 @@ const Invoice = require('../models/Invoice');
 router.get('/', (req,res) => 
 Invoice.findAll()
 .then( invoice => {
-    console.log(invoice);
-    res.sendStatus(200);
+    res.render('invoice', {
+        invoice
+    })
   })
   .catch(err => {
     console.log( err);
