@@ -5,6 +5,12 @@ const path = require('path');
 
 const app = express();
 
+//handlebars
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+app.use(express.static(path.join(__dirname, 'public')))
+
 //database 
 const db = require('./config/database');
 //test db connection
