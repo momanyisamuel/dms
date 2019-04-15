@@ -1,12 +1,200 @@
-<h1>Invoice Template</h1>
 
-<div class="invoices">
-    {{#each invoice}}
-        <p>{{ invoiceno }}</p>
-        <p>{{ cost }}</p>
-        <p>{{ item }}</p>
-        <p>{{ quantity }}</p>
-    {{else}}
-        <p>No invoices available</p>
-    {{/each}}
-</div>
+<div class="bx--data-table-container " data-table>
+        <div class="bx--data-table-header">
+            <h4 class="bx--data-table-header__title">Invoices</h4>
+            <p class="bx--data-table-header__description">List of invoices</p>
+        </div>
+        <!-- Toolbar Content -->
+        <section class="bx--table-toolbar ">
+            <!-- Batch actions -->
+            <div class="bx--batch-actions" aria-label="Table Action Bar">
+                <div class="bx--action-list">
+                    <button data-event="action-bar-cancel" class="bx--btn bx--btn--primary bx--batch-summary__cancel">Cancel</button>
+                </div>
+                <div class="bx--batch-summary">
+                    <p class="bx--batch-summary__para">
+                        <span data-items-selected>3</span> items selected
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Persistent Search -->
+    
+            <div class="bx--toolbar-content">
+                <!--  Default hidden search -->
+                <!--  Disabled toolbar hidden search -->
+                <!-- disabled toolbar overflow menu -->
+                <button class="bx--btn bx--btn--sm bx--btn--primary">
+                 Add Invoice 
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15V7h-2v8H7v2h8v8h2v-8h8v-2h-8z"></path></svg>
+              </button>
+            </div>
+        </section>
+        <!-- End Toolbar Content -->
+    
+        <!-- Table -->
+        <table class="bx--data-table bx--data-table--sort ">
+            <thead>
+                <tr>
+                    <th class="bx--table-column-checkbox">
+                        <!-- checkbox th -->
+                        <input data-event="select-all" id="bx--checkbox-20" class="bx--checkbox" type="checkbox" value="green" name="checkbox-20">
+                        <label for="bx--checkbox-20" class="bx--checkbox-label" aria-label="Label name"></label>
+                    </th>
+                    <th>
+                        <!-- checkbox th -->
+                        <!-- sortable th  -->
+                        <button class="bx--table-sort" data-event="sort" title="Name">
+                      <span class="bx--table-header-label">Item</span>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.3 9.3l-3.8 3.8V1h-1v12.1L3.7 9.3 3 10l5 5 5-5z"></path></svg>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.8 10.3L12 12.1V2h-1v10.1l-1.8-1.8-.7.7 3 3 3-3zM4.5 2l-3 3 .7.7L4 3.9V14h1V3.9l1.8 1.8.7-.7z"></path></svg>
+                    </button>
+                        <!-- no sort th -->
+                    </th>
+                    <th>
+                        <!-- checkbox th -->
+                        <!-- sortable th  -->
+                        <button class="bx--table-sort" data-event="sort" title="Protocol">
+                      <span class="bx--table-header-label">Cost</span>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.3 9.3l-3.8 3.8V1h-1v12.1L3.7 9.3 3 10l5 5 5-5z"></path></svg>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.8 10.3L12 12.1V2h-1v10.1l-1.8-1.8-.7.7 3 3 3-3zM4.5 2l-3 3 .7.7L4 3.9V14h1V3.9l1.8 1.8.7-.7z"></path></svg>
+                    </button>
+                        <!-- no sort th -->
+                    </th>
+                    <th>
+                        <!-- checkbox th -->
+                        <!-- sortable th  -->
+                        <button class="bx--table-sort" data-event="sort" title="Port">
+                      <span class="bx--table-header-label">Quantity</span>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.3 9.3l-3.8 3.8V1h-1v12.1L3.7 9.3 3 10l5 5 5-5z"></path></svg>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.8 10.3L12 12.1V2h-1v10.1l-1.8-1.8-.7.7 3 3 3-3zM4.5 2l-3 3 .7.7L4 3.9V14h1V3.9l1.8 1.8.7-.7z"></path></svg>
+                    </button>
+                        <!-- no sort th -->
+                    </th>
+                    <th>
+                        <!-- checkbox th -->
+                        <!-- sortable th  -->
+                        <button class="bx--table-sort" data-event="sort" title="Rule">
+                      <span class="bx--table-header-label">Date</span>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.3 9.3l-3.8 3.8V1h-1v12.1L3.7 9.3 3 10l5 5 5-5z"></path></svg>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.8 10.3L12 12.1V2h-1v10.1l-1.8-1.8-.7.7 3 3 3-3zM4.5 2l-3 3 .7.7L4 3.9V14h1V3.9l1.8 1.8.7-.7z"></path></svg>
+                    </button>
+                        <!-- no sort th -->
+                    </th>
+                    <th>
+                        <!-- checkbox th -->
+                        <!-- sortable th  -->
+                        <button class="bx--table-sort" data-event="sort" title="Attached Groups">
+                      <span class="bx--table-header-label">Description</span>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.3 9.3l-3.8 3.8V1h-1v12.1L3.7 9.3 3 10l5 5 5-5z"></path></svg>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.8 10.3L12 12.1V2h-1v10.1l-1.8-1.8-.7.7 3 3 3-3zM4.5 2l-3 3 .7.7L4 3.9V14h1V3.9l1.8 1.8.7-.7z"></path></svg>
+                    </button>
+                        <!-- no sort th -->
+                    </th>
+                    <th>
+                        <!-- checkbox th -->
+                        <!-- sortable th  -->
+                        <button class="bx--table-sort" data-event="sort" title="Status">
+                      <span class="bx--table-header-label">Invoice No</span>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.3 9.3l-3.8 3.8V1h-1v12.1L3.7 9.3 3 10l5 5 5-5z"></path></svg>
+                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.8 10.3L12 12.1V2h-1v10.1l-1.8-1.8-.7.7 3 3 3-3zM4.5 2l-3 3 .7.7L4 3.9V14h1V3.9l1.8 1.8.7-.7z"></path></svg>
+                    </button>
+                        <!-- no sort th -->
+                    </th>
+                    <th>
+                        <!-- checkbox th -->
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each invoice}}
+                <tr>
+                    <!-- expand icon td -->
+                    <td class="bx--table-column-checkbox">
+                        <input data-event="select" id="bx--checkbox-13" class="bx--checkbox" type="checkbox" value="green" name="checkbox-13">
+                        <label for="bx--checkbox-13" class="bx--checkbox-label" aria-label="Label name"></label>
+                    </td>
+                    <!-- inline action td's -->
+                    <!-- expand icon td -->
+                    <td>
+                        <!-- truncated new markup -->
+                        {{ item }}
+                    </td>
+                    <!-- expand icon td -->
+                    <td>
+                        <!-- truncated new markup -->
+                        {{ cost }}
+                    </td>
+                    <!-- expand icon td -->
+                    <td>
+                        <!-- truncated new markup -->
+                        {{ quantity }}
+                    </td>
+                    <!-- expand icon td -->
+                    <td>
+                        <!-- truncated new markup -->
+                        {{ date }}
+                    </td>
+                    <!-- expand icon td -->
+                    <td>
+                        <!-- truncated new markup -->
+                        Maureen&#x27;s VM Groups Testing a really long text here
+                    </td>
+                    <!-- expand icon td -->
+                    <td>
+                        <!-- truncated new markup -->
+                        {{ invoiceno }}
+                    </td>
+                    <!-- expand icon td -->
+                    <td class="bx--table-column-menu">
+                        <div data-overflow-menu role="menu" tabindex="0" aria-label="Overflow menu description" class="bx--overflow-menu">
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--overflow-menu__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="3" r="1"></circle><circle cx="8" cy="8" r="1"></circle><circle cx="8" cy="13" r="1"></circle></svg>
+                            <ul class="bx--overflow-menu-options bx--overflow-menu--flip">
+                                <li class="bx--overflow-menu-options__option">
+                                    <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
+                              <div class="bx--overflow-menu-options__option-content">
+                                Stop app
+                              </div>
+                            </button>
+                                </li>
+                                <li class="bx--overflow-menu-options__option">
+                                    <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
+                              <div class="bx--overflow-menu-options__option-content">
+                                Restart app
+                              </div>
+                            </button>
+                                </li>
+                                <li class="bx--overflow-menu-options__option">
+                                    <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
+                              <div class="bx--overflow-menu-options__option-content">
+                                Rename app
+                              </div>
+                            </button>
+                                </li>
+                                <li class="bx--overflow-menu-options__option">
+                                    <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
+                              <div class="bx--overflow-menu-options__option-content">
+                                Edit routes and access, use title when
+                              </div>
+                            </button>
+                                </li>
+                                <li class="bx--overflow-menu-options__option bx--overflow-menu-options__option--danger">
+                                    <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
+                              <div class="bx--overflow-menu-options__option-content">
+                                Delete app
+                              </div>
+                            </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <!-- inline edit tds -->
+                </tr>
+                <!-- Expandable child row -->
+                {{else}}
+                    <p>No invoices available</p>
+                {{/each}}
+            </tbody>
+        </table>
+    
+    </div>
