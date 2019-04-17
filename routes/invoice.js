@@ -15,21 +15,15 @@ Invoice.findAll()
     console.log( err);
   })
 )
+//display invoice form
+router.get('/add', (req, res) => res.render('add'))
 
 //add an invoice
-router.get('/add', (req, res) => {
-    const data = {
-        id:"1",
-        invoiceno : "#56876",
-        date:"12/08/2018",
-        item: "Tooth removal",
-        cost:"650",
-        quantity:"1"
-    }
+router.post('/add', (req, res) => {
 
-    let { id, invoiceno, date, item, cost, quantity } = data;
+    let { invoiceno, date, item, cost, quantity } = req.body;
+
     Invoice.create({
-        id,
         invoiceno, 
         date, 
         item, 
@@ -38,6 +32,18 @@ router.get('/add', (req, res) => {
     })
     .then(invoice => res.redirect('/invoices'))
     .catch(err => console.log(err))
+})
+
+//show single invoice
+router.get('/:id', (req, res) => {
+
+  const id = req.params.id
+
+  Invoice.findAll({
+    where:{id : id}
+  }).then(invoice => {res.render('view', {
+     invoice
+  })})
 })
 
 module.exports = router;

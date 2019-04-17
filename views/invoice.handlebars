@@ -24,10 +24,10 @@
                 <!--  Default hidden search -->
                 <!--  Disabled toolbar hidden search -->
                 <!-- disabled toolbar overflow menu -->
-                <button class="bx--btn bx--btn--sm bx--btn--primary">
-                 Add Invoice 
-                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15V7h-2v8H7v2h8v8h2v-8h8v-2h-8z"></path></svg>
-              </button>
+                <a href="/invoices/add" class="bx--btn bx--btn--sm bx--btn--primary">
+                    Add Invoice
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15V7h-2v8H7v2h8v8h2v-8h8v-2h-8z"></path></svg>
+                </a>
             </div>
         </section>
         <!-- End Toolbar Content -->
@@ -108,7 +108,7 @@
             </thead>
             <tbody>
                 {{#each invoice}}
-                <tr>
+                <tr id={{ id }}>
                     <!-- expand icon td -->
                     <td class="bx--table-column-checkbox">
                         <input data-event="select" id="bx--checkbox-13" class="bx--checkbox" type="checkbox" value="green" name="checkbox-13">
@@ -152,39 +152,26 @@
                             <ul class="bx--overflow-menu-options bx--overflow-menu--flip">
                                 <li class="bx--overflow-menu-options__option">
                                     <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
-                              <div class="bx--overflow-menu-options__option-content">
-                                Stop app
-                              </div>
-                            </button>
+                                        <div class="bx--overflow-menu-options__option-content">
+                                            edit invoice
+                                        </div>
+                                    </button>
                                 </li>
                                 <li class="bx--overflow-menu-options__option">
                                     <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
-                              <div class="bx--overflow-menu-options__option-content">
-                                Restart app
-                              </div>
-                            </button>
+                                        <div class="bx--overflow-menu-options__option-content">
+                                            export as pdf
+                                        </div>
+                                    </button>
                                 </li>
                                 <li class="bx--overflow-menu-options__option">
                                     <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
-                              <div class="bx--overflow-menu-options__option-content">
-                                Rename app
-                              </div>
-                            </button>
+                                        <div class="bx--overflow-menu-options__option-content">
+                                            delete invoice
+                                        </div>
+                                    </button>
                                 </li>
-                                <li class="bx--overflow-menu-options__option">
-                                    <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
-                              <div class="bx--overflow-menu-options__option-content">
-                                Edit routes and access, use title when
-                              </div>
-                            </button>
-                                </li>
-                                <li class="bx--overflow-menu-options__option bx--overflow-menu-options__option--danger">
-                                    <button class="bx--overflow-menu-options__btn" onclick="console.log('keyboard action')">
-                              <div class="bx--overflow-menu-options__option-content">
-                                Delete app
-                              </div>
-                            </button>
-                                </li>
+                               
                             </ul>
                         </div>
                     </td>
@@ -196,5 +183,4 @@
                 {{/each}}
             </tbody>
         </table>
-    
     </div>
