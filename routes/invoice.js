@@ -35,15 +35,25 @@ router.post('/add', (req, res) => {
 })
 
 //show single invoice
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => { 
 
-  const id = req.params.id
-
-  Invoice.findAll({
-    where:{id : id}
-  }).then(invoice => {res.render('view', {
+  Invoice.findOne({
+    where:{id : req.params.id }
+  })
+  .then(invoice => {
+    res.render('view', {
      invoice
   })})
 })
 
+router.get('/delete/:id', (req, res) => { 
+
+  Invoice.destroy({
+    where:{id : req.params.id }
+  })
+  .then(invoice => {
+    res.redirect('/invoices')
+  })
+
+})
 module.exports = router;
