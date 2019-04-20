@@ -1,0 +1,84 @@
+// imports
+@import 'type'
+    
+// mixins
+@mixin karla 
+    font-family: 'Karla', sans-serif
+
+// global
+body
+    @include karla
+    color: #242424
+
+a
+    text-decoration: none
+
+.black
+    color: #242424
+.sidebar
+    width: 15%
+    position: fixed
+    height: 100vh
+    background-color: #faf9fb
+    .sidebar-logo
+        display: block
+        padding: 20px 20px
+        color: #242424
+    .sidebar-menu
+        display: block
+        padding: 20px 20px
+        color: #242424
+        li
+            margin: 30px 0
+            a
+                font-size: 18px
+                color: #545454
+    .sidebar-user
+        position: absolute
+        display: flex
+        bottom: 0
+        padding: 20px 30px
+.main-section
+   margin-left: 240px
+   height: 100vh
+   .top-bar
+       display: flex
+       justify-content: space-between
+       border-bottom: 1px solid #f4f7f7 
+       .top-bar--title
+           padding: 0 40px
+       .top-bar--nav
+           display: flex
+           padding: 0 20px
+           li
+               margin-left: 20px
+   .main-content
+        display: flex
+        width: 100%
+        .invoice-form
+            padding: 0 40px
+            width: 70%
+        .invoice-options
+            width: 30%
+            padding: 0 20px
+            border-left: 1px solid #f4f7f7
+            height: 88vh
+            .searchbar
+                display: block
+                width: 100%
+                input
+                    width: 100%
+                a
+                    display: block
+.invoice-form--address, .option
+    display: flex
+    justify-content: space-between
+.item
+    display: flex
+    justify-content: space-around
+.item input
+    width: 100%
+.fas.fa-plus
+    font-size: 16px           
+.option h4
+    margin: 0
