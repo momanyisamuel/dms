@@ -5,70 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DMS</title>
-
-    <link rel="stylesheet" href="./css/carbon-components.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/carbon-components.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="bx--grid">
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="#" class="sidebar-logo">LOGO</a>
+            
+            <ul class="sidebar-menu">
+                <li><a href="#">Clients</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+                <li><a href="#">Receipts</a></li>
+            </ul>
 
-        <br><br><br>
-        <div class="bx--data-table-header">
-            <h4 class="bx--data-table-header__title">Invoices</h4>
-            <p class="bx--data-table-header__description">Create Invoice</p>
-        </div>
-        
-        <br>
-        <div class="bx--form-item">
-            <label for="text-input-3" class="bx--label">Invoice No</label>
-            <div class="bx--form__helper-text">
-                Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
+            <div class="sidebar-user">
+                <p><i class="far fa-user-circle"></i> John Doe</p>
             </div>
-            <input id="text-input-3" type="text" class="bx--text-input" placeholder="Optional placeholder text">
         </div>
-        <div class="bx--form-item">
-            <label for="text-input-3" class="bx--label">Date</label>
-            <div class="bx--form__helper-text">
-                Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
+        <div class="main-section">
+            <div class="top-bar">
+                <div class="top-bar--title">
+                    <h3>Invoice <span style="color:dimgrey">(#0001)</span> </h3>
+                </div>
+                <ul class="top-bar--nav">
+                    <li><a href="addinvoice.html"><i class="fas fa-plus"></i> New Invoice</a></li>
+                    <li><a href="#" class="black">Sign out</a></li>
+                </ul>
             </div>
-            <input id="text-input-3" type="text" class="bx--text-input" placeholder="Optional placeholder text">
-        </div>
-        <div class="bx--form-item">
-            <label for="text-input-3" class="bx--label">Item</label>
-            <div class="bx--form__helper-text">
-                Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
+            
+            <div class="main-content">
+                
+                <div class="invoice-form">
+                    <br>
+                    <form action="">
+                        <div class="invoice-form--address">
+                            <div class="invoice-form--name">
+                                <label for="name">Billing to</label>
+                                <input type="text" name="name" placeholder="John Doe">
+                            </div>
+                            <div class="invoice-form--date">
+                                <label for="date">Date</label>
+                                <input type="text" name="date" placeholder="12/28/2018">
+                            </div>
+                        </div>
+                        <div class="invoice-form--items">
+                            <h4>EXPENSES</h4>
+                            <div class="invoice-form--item">
+                                <label for="date"></label>
+                                <input type="text" name="item" placeholder="Item one">
+                                <label for="date"></label>
+                                <input type="text" name="description" placeholder="A short description">
+                                <label for="date"></label>
+                                <input type="text" name="cost" placeholder="1500">
+                                <label for="date"></label>
+                                <input type="text" name="quantity" placeholder="1">
+                                <label for="date"></label>
+                                <input type="text" name="total" placeholder="1500">
+                            </div>
+                            <div class="invoice-form--item">
+                                <label for="date"></label>
+                                <input type="text" name="item" placeholder="Item one">
+                                <label for="date"></label>
+                                <input type="text" name="description" placeholder="A short description">
+                                <label for="date"></label>
+                                <input type="text" name="cost" placeholder="1500">
+                                <label for="date"></label>
+                                <input type="text" name="quantity" placeholder="1">
+                                <label for="date"></label>
+                                <input type="text" name="total" placeholder="1500">
+                            </div>
+                            <a href="#"><i class="fas fa-plus"></i> Add Item</a>
+                        </div>
+                        <div class="invoice-form--summary">
+                            <div class="invoice-form--option">
+                                <h4>Subtotal</h4>
+                                <h4>2000</h4>
+                            </div>
+                            <div class="invoice-form--option">
+                                <h4>Taxes</h4>
+                                <h4>10%</h4>
+                            </div>
+                            <div class="invoice-form--option">
+                                <h4>Total</h4>
+                                <h4>2500</h4>
+                            </div>
+                        </div>
+                        <a href="#" class="button">Print PDF</a>
+                        <a href="#" class="button">Save Invoice</a>
+                    </form>
+                </div>
+                <div class="invoice-options">
+                    <br>
+                    <div class="searchbar">
+                        
+                        <input type="search" placeholder="search">
+                    </div>
+                    <ul class="option--list">
+                        <h4>SERVICES</h4>
+                        <li><a href="#">Tooth Filling</a></li>
+                        <li><a href="#">Tooth Removal</a></li>
+                        <li><a href="#">Tooth Replacement</a></li>
+                    </ul>
+                </div>
             </div>
-            <input id="text-input-3" type="text" class="bx--text-input" placeholder="Optional placeholder text">
-        </div>
-        <div class="bx--form-item">
-            <label for="text-input-3" class="bx--label">cost</label>
-            <div class="bx--form__helper-text">
-                Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-            </div>
-            <input id="text-input-3" type="text" class="bx--text-input" placeholder="Optional placeholder text">
-        </div>
-        <div class="bx--form-item">
-            <label for="text-input-3" class="bx--label">Quantity</label>
-            <div class="bx--form__helper-text">
-                Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-            </div>
-            <input id="text-input-3" type="text" class="bx--text-input" placeholder="Optional placeholder text">
-        </div>
-        <div class="bx--form-item">
-            <label for="text-input-3" class="bx--label">id</label>
-            <div class="bx--form__helper-text">
-                Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-            </div>
-            <input id="text-input-3" type="text" class="bx--text-input" placeholder="Optional placeholder text">
-        </div>
-        
-        <br><br>
-        <div class="bx--form-item">
-            <button class="bx--btn bx--btn--primary" type="button">Add Invoice</button>
+            
+            
         </div>
     </div>
-    
-    
-    <script src="js/carbon-components.min.js"></script>
 </body>
 </html>
+

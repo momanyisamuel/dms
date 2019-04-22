@@ -49,7 +49,7 @@ a
            padding: 0 40px
        .top-bar--nav
            display: flex
-           padding: 0 20px
+           padding: 0 40px
            li
                margin-left: 20px
    .main-content
@@ -60,7 +60,7 @@ a
             width: 70%
         .invoice-options
             width: 30%
-            padding: 0 20px
+            padding: 0 40px
             border-left: 1px solid #f4f7f7
             height: 88vh
             .searchbar
@@ -73,12 +73,27 @@ a
 .invoice-form--address, .option
     display: flex
     justify-content: space-between
-.item
+.invoice-form--item
     display: flex
     justify-content: space-around
-.item input
+.invoice-form--item input
     width: 100%
 .fas.fa-plus
-    font-size: 16px           
-.option h4
+    font-size: 16px 
+.invoice-form--option
+    display: flex
+    justify-content: space-between          
+.invoice-form--option h4
     margin: 0
+
+.invoice-form--name, .invoice-form--date
+    label
+        display: block
+        font-size: 0.75rem
+        padding-bottom: 8px
+    input
+        display: block
+
+.data-section
+    width: 100%
+    padding: 0 40px
