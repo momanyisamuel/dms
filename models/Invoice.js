@@ -3,20 +3,26 @@ const db = require('../config/database');
 
 const Invoice = db.define('invoice', {
    
-    date: {
-        type: Sequelize.STRING
-    },
-    cost: {
-        type: Sequelize.INTEGER
-    },
     invoiceno: {
         type: Sequelize.STRING
     },
-    item: {
+    invoicedate: {
+        type: Sequelize.DATE
+    },
+    customername: {
         type: Sequelize.STRING
     },
-    quantity: {
-        type: Sequelize.INTEGER
+    customeraddress: {
+        type: Sequelize.STRING
+    },
+    invoiceprice: {
+        type: Sequelize.STRING
+    },
+    invoicetax: {
+        type: Sequelize.STRING
+    },
+    invoicetotal: {
+        type: Sequelize.STRING
     }
 })
 
