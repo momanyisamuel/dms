@@ -27,8 +27,7 @@ router.post('/add', (req, res) => {
       invoiceno, 
       invoicedate, 
       customername, 
-      customeraddress, 
-      invoiceprice, 
+      customeraddress,  
       invoicetax, 
       invoicetotal
     })
