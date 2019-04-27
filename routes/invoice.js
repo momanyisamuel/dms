@@ -21,14 +21,16 @@ router.get('/add', (req, res) => res.render('add'))
 //add an invoice
 router.post('/add', (req, res) => {
 
-    let { invoiceno, date, item, cost, quantity } = req.body;
+    let { invoiceno, invoicedate, customername, customeraddress, invoiceprice, invoicetax, invoicetotal } = req.body;
 
     Invoice.create({
-        invoiceno, 
-        date, 
-        item, 
-        cost, 
-        quantity
+      invoiceno, 
+      invoicedate, 
+      customername, 
+      customeraddress, 
+      invoiceprice, 
+      invoicetax, 
+      invoicetotal
     })
     .then(invoice => res.redirect('/invoices'))
     .catch(err => console.log(err))
