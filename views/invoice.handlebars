@@ -27,10 +27,10 @@
                         <td>{{invoiceno}} </td>
                         <td>{{invoicedate}}</td>
                         <td>{{invoicetotal}}</td>
-                        <td>Export</td>
+                        <td><a href="/invoices/{{id}}/pdf" target="_blank" >Export as pdf</a></td>
                         <td>
-                            <a href="#" class="button">Edit</a>
-                            <a href="#" class="button">Delete</a>
+                            <a href="/invoices/edit/{{id}}" class="button">Edit</a>
+                            <a href="/invoices/delete/{{id}}" class="button">Delete</a>
                         </td>
                     </tr>
                     {{else}}

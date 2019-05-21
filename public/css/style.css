@@ -183,6 +183,7 @@ a {
 .invoice-form--item {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 5px;
 }
 
 .invoice-form--item input {
@@ -196,6 +197,7 @@ a {
 .invoice-form--option {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .invoice-form--option h4 {
@@ -214,6 +216,20 @@ a {
 .data-section {
   width: 100%;
   padding: 0 40px;
+}
+
+input {
+  height: 35px;
+  border: 2px solid #f2f2f2;
+  padding: 13px;
+}
+
+.service-options {
+  border: 2px solid #f2f2f2;
+  padding: 13px;
+  width: 100%;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

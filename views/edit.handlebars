@@ -1,7 +1,7 @@
 <div class="main-section">
     <div class="top-bar">
         <div class="top-bar--title">
-            <h3>Invoice <span style="color:dimgrey">(#0001)</span> </h3>
+            <h3>Invoice <span style="color:dimgrey">{{invoice.invoiceno}}</span> </h3>
         </div>
         <ul class="top-bar--nav">
             <li><a href="/invoices/add"><i class="fas fa-plus"></i> New Invoice</a></li>
@@ -13,19 +13,19 @@
         
         <div class="invoice-form">
             <br>
-            <form action="/invoices/add" method="POST">
+            <form action="/invoices/edit/{{invoice.id}}" method="POST">
                 <div class="invoice-form--address">
                     <div class="invoice-form--name">
                         <label for="name">Billing to</label>
-                        <input type="text" name="customername" placeholder="John Doe"><br>
+                        <input type="text" name="customername" value="{{ invoice.customername }}"><br>
                         <label for="name">Address</label>
-                        <input type="text" name="customeraddress" placeholder="John Doe">
+                        <input type="text" name="customeraddress" value={{invoice.customeraddress}}>
                     </div>
                     <div class="invoice-form--date">
                         <label for="date">Date</label>
-                        <input type="text" name="invoicedate" placeholder="12/28/2018"><br>
+                        <input type="text" name="invoicedate" value={{invoice.invoicedate}}><br>
                         <label for="date">Invoice No</label>
-                        <input type="text" name="invoiceno" placeholder="12/28/2018">
+                        <input type="text" name="invoiceno" value={{invoice.invoiceno}}>
                     </div>
                 </div>
                 <div class="invoice-form--items">
@@ -59,15 +59,15 @@
                     </div> -->
                     <div class="invoice-form--option">
                         <h4>Taxes</h4>
-                        <span><input type="text" name="invoicetax" placeholder="10%"></span>
+                        <span><input type="text" name="invoicetax" value={{invoice.invoicetax}}></span>
                     </div>
                     <div class="invoice-form--option">
                         <h4>Total</h4>
-                        <span><input type="text" name="invoicetotal" placeholder="2000"></span>
+                        <span><input type="text" name="invoicetotal" value={{invoice.invoicetotal}}></span>
                     </div>
                 </div> <br>
                 <a href="#" class="button">Print PDF</a>
-                <button class="button" type="submit">Save Invoice</button>
+                <button class="button" type="submit">update Invoice</button>
             </form>
         </div>
         <div class="invoice-options">

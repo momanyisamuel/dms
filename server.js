@@ -29,6 +29,6 @@ app.get('/', (req, res) => res.send('index'))
 
 app.use('/invoices', require('./routes/invoice'))
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, console.log('app started...'));

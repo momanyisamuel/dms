@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
+const Item = require('../models/Item');
+
 
 const Invoice = db.define('invoice', {
    
@@ -25,5 +27,7 @@ const Invoice = db.define('invoice', {
         type: Sequelize.STRING
     }
 })
+
+Invoice.hasMany(Item)
 
 module.exports = Invoice;

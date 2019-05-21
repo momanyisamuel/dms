@@ -1,53 +1,112 @@
+<style>
+    body {
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+    }
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .invoice-header, .invoice--heading, .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    p {
+        margin: 0;
+    }
+    .invoice--table, .invoice--heading {
+        width: 100%;
+        border: 0.5px #2c2c2c solid;
+        margin-bottom: 30px;
+    }
+    th {
+        text-align: left;
+    }
 
- <div class="bx--grid">
-
-        <br><br><br>
-        <div class="bx--data-table-header">
-            <h4 class="bx--data-table-header__title">Invoices</h4>
-            <p class="bx--data-table-header__description">Update Invoice</p>
+</style>
+<div class="container">
+        <div class="invoice-header">
+                <div class="invoice--logo"></div>
+                <div><h3>INVOICE</h3></div>
         </div>
+        <div class="invoice-body">
+            <div class="invoice--heading">
+                <div id="customer">
+                    <table id="meta">
+                        <tr>
+                            <td class="meta-head">InvoiceNo</td>
+                            <td>{{ invoice.invoiceno }}</td>
+                        </tr>
+                        <tr>
+                            <td class="meta-head">Date</td>
+                            <td>{{ invoice.invoicedate }}</td>
+                        </tr>
+                        <tr>
+                            <td class="meta-head">Branch</td>
+                            <td>Nairobi</td>
+                        </tr>
+                        <tr>
+                            <td class="meta-head">Doctor</td>
+                            <td>Dr Samuel Chweya</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="invoice--address">
+                    <p>Customer Name: {{ invoice.customername }}</p>
+                    <p>Covered by: APA Insurance</p>
+                    <p>Membership NO: {{invoice.invoiceno}}</p>
+                    <p>UHID: 2347</p>
+                </div>
+            </div>
+            <table class="invoice--table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <td></td>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr class="item-row">
+                        <td class="item-name">{{ item }}</td>
+                        <td>{{ cost }}</td>
+                        <td>{{ quantity }}</td>
+                        <td></td>
+                        <td><span class="price">{{ price }}</span></td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="blank"> </td>
+                        <td colspan="2" class="total-line">Tax</td>
+                        <td class="total-value"><div id="subtotal">{{ tax }}</div></td>
+                    </tr>
+                    <tr>
         
-        <br>
-        <form action="/invoices/add" method="POST">
-            <div class="bx--form-item">
-                <label for="text-input-3" class="bx--label">Invoice No</label>
-                <div class="bx--form__helper-text">
-                    Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-                </div>
-                <input id="text-input-3"  name="invoiceno" type="text" class="bx--text-input" value={{ invoice.invoiceno }}>
-            </div>
-            <div class="bx--form-item">
-                <label for="text-input-3" class="bx--label">Date</label>
-                <div class="bx--form__helper-text">
-                    Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-                </div>
-                <input id="text-input-3" name="date" type="text" class="bx--text-input" value={{ invoice.date }}>
-            </div>
-            <div class="bx--form-item">
-                <label for="text-input-3" class="bx--label">Item</label>
-                <div class="bx--form__helper-text">
-                    Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-                </div>
-                <input id="text-input-3" name="item" type="text" class="bx--text-input" value={{ invoice.item }}>
-            </div>
-            <div class="bx--form-item">
-                <label for="text-input-3" class="bx--label">cost</label>
-                <div class="bx--form__helper-text">
-                    Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-                </div>
-                <input id="text-input-3" name="cost" type="text" class="bx--text-input" value={{ invoice.cost }}>
-            </div>
-            <div class="bx--form-item">
-                <label for="text-input-3" class="bx--label">Quantity</label>
-                <div class="bx--form__helper-text">
-                    Optional helper text here; if message is more than one line text should wrap (~100 character count maximum)
-                </div>
-                <input id="text-input-3" name="quantity" type="text" class="bx--text-input" value={{ invoice.quantity }}>
-            </div>
-        
-            <br><br>
-            <div class="bx--form-item">
-                <button class="bx--btn bx--btn--primary" type="submit">Update Invoice</button>
-            </div>
-        </form>
+                        <td colspan="2" class="blank"> </td>
+                        <td colspan="2" class="total-line">Net Total</td>
+                        <td class="total-value"><div id="total">{{ total }}</div></td>
+                    </tr>
+                </tfoot>
+                
+            </table>
+        </div>
+        <div>
+            <p>Prepared By: Rose Doe</p>
+        </div>
+        <br><br><br>
+        <div>
+            <p>I, the (undersigned), being the patient/guardian, confirm use of the services listed on this invoice. I also confirm that i shall  be fully and severally liable for the hospital bills, if for any reason my insurance/employer declines to settle the bill amount.</p>
+        </div>
+        <br><br>
+        <div class="footer">
+            <p>Parent/Guardian Sign</p>
+            <p>Stamp</p>
+        </div>
     </div>
