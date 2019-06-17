@@ -5,6 +5,7 @@ const path = require('path');
 var passport = require('passport')
 const session = require("express-session")
 const auth = require('./config/auth')
+const { Client } = require('pg')
 
 const app = express();
 
