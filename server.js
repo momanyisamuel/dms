@@ -36,7 +36,12 @@ db.sequelize.sync({
   console.error('Unable to connect to the database:', err);
 });
 
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
+client.connect();
 
 app.use('/', require('./routes/login'))
 app.use('/invoices',  require('./routes/invoice'))
