@@ -17,7 +17,10 @@
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
     "puppeteer": "^1.16.0",
-    "sequelize": "^5.3.5"
+    "sequelize": "^5.3.5",
+    "express-session": "^1.16.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "express-session": "^1.16.1",
@@ -25,10 +28,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   },
-  "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
-  },
+  
   "author": "Momanyi Samuel",
   "license": "ISC"
 }
