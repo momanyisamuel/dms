@@ -37,11 +37,11 @@
                     <table id="meta">
                         <tr>
                             <td class="meta-head">InvoiceNo</td>
-                            <td>{{ invoice.invoiceno }}</td>
+                            <td>{{ invoice.number }}</td>
                         </tr>
                         <tr>
                             <td class="meta-head">Date</td>
-                            <td>{{ invoice.invoicedate }}</td>
+                            <td>{{ invoice.date }}</td>
                         </tr>
                         <tr>
                             <td class="meta-head">Branch</td>
@@ -56,7 +56,7 @@
                 <div class="invoice--address">
                     <p>Customer Name: {{ invoice.customername }}</p>
                     <p>Covered by: APA Insurance</p>
-                    <p>Membership NO: {{invoice.invoiceno}}</p>
+                    <p>Membership NO: {{invoice.number}}</p>
                     <p>UHID: 2347</p>
                 </div>
             </div>
@@ -72,13 +72,15 @@
                 </thead>
                 
                 <tbody>
+                    {{#each invoice.Items }}
                     <tr class="item-row">
-                        <td class="item-name">{{ item }}</td>
-                        <td>{{ cost }}</td>
+                        <td class="item-name">{{ name }}</td>
+                        <td>{{ price }}</td>
                         <td>{{ quantity }}</td>
                         <td></td>
                         <td><span class="price">{{ price }}</span></td>
                     </tr>
+                    {{/each}}
                 </tbody>
 
                 <tfoot>
@@ -91,7 +93,7 @@
         
                         <td colspan="2" class="blank"> </td>
                         <td colspan="2" class="total-line">Net Total</td>
-                        <td class="total-value"><div id="total">{{ total }}</div></td>
+                        <td class="total-value"><div id="total">{{ invoice.total }}</div></td>
                     </tr>
                 </tfoot>
                 

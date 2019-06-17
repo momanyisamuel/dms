@@ -5,7 +5,7 @@
         </div>
         <ul class="top-bar--nav">
             <li><a href="/invoices/add"><i class="fas fa-plus"></i> New Invoice</a></li>
-            <li><a href="#" class="black">Sign out</a></li>
+            <li><a href="/logout" class="black">Sign out</a></li>
         </ul>
     </div>
 
@@ -24,9 +24,9 @@
                 <tbody>
                     {{#each invoice}}
                     <tr>
-                        <td>{{invoiceno}} </td>
-                        <td>{{invoicedate}}</td>
-                        <td>{{invoicetotal}}</td>
+                        <td>{{number}} </td>
+                        <td>{{date}}</td>
+                        <td>{{total}}</td>
                         <td><a href="/invoices/{{id}}/pdf" target="_blank" >Export as pdf</a></td>
                         <td>
                             <a href="/invoices/edit/{{id}}" class="button">Edit</a>

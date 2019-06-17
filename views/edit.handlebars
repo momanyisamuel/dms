@@ -1,7 +1,7 @@
 <div class="main-section">
     <div class="top-bar">
         <div class="top-bar--title">
-            <h3>Invoice <span style="color:dimgrey">{{invoice.invoiceno}}</span> </h3>
+            <h3>Invoice <span style="color:dimgrey">({{invoice.number}})</span> </h3>
         </div>
         <ul class="top-bar--nav">
             <li><a href="/invoices/add"><i class="fas fa-plus"></i> New Invoice</a></li>
@@ -16,40 +16,31 @@
             <form action="/invoices/edit/{{invoice.id}}" method="POST">
                 <div class="invoice-form--address">
                     <div class="invoice-form--name">
-                        <label for="name">Billing to</label>
+                        <label for="customername">Billing to</label>
                         <input type="text" name="customername" value="{{ invoice.customername }}"><br>
-                        <label for="name">Address</label>
+                        <label for="customeraddress">Address</label>
                         <input type="text" name="customeraddress" value={{invoice.customeraddress}}>
                     </div>
                     <div class="invoice-form--date">
                         <label for="date">Date</label>
-                        <input type="text" name="invoicedate" value={{invoice.invoicedate}}><br>
-                        <label for="date">Invoice No</label>
-                        <input type="text" name="invoiceno" value={{invoice.invoiceno}}>
+                        <input type="text" name="date" value={{invoice.date}}><br>
+                        <label for="number">Invoice No</label>
+                        <input type="text" name="number" value={{invoice.number}}>
                     </div>
                 </div>
                 <div class="invoice-form--items">
                     <h4>EXPENSES</h4>
+                    {{#each invoice.Items }}
                     <div class="invoice-form--item">
-                        <label for="date"></label>
-                        <input type="text" name="invoiceitem" placeholder="Item one">
-                        <label for="date"></label>
-                        <input type="text" name="price" placeholder="1500">
-                        <label for="date"></label>
-                        <input type="text" name="quantity" placeholder="1">
-                        <label for="date"></label>
-                        <input type="text" name="taxtotal" placeholder="1500">
-                    </div>
-                    <div class="invoice-form--item">
-                        <label for="invoiceitem"></label>
-                        <input type="text" name="invoiceitem" placeholder="Item one">
-                        <label for="price"></label>
-                        <input type="text" name="price" placeholder="1500">
+                        <label for="name"></label>
+                        <input type="text" name="name" placeholder="Item one" value="{{name}}">
                         <label for="quantity"></label>
-                        <input type="text" name="quantity" placeholder="1">
-                        <label for="taxtotal"></label>
-                        <input type="text" name="taxtotal" placeholder="1500">
-                    </div><br>
+                        <input type="text" name="quantity" placeholder="1" value="{{quantity}}">
+                        <label for="price"></label>
+                        <input type="text" name="price" placeholder="" value="{{price}}">
+                        <input type="hidden" name="id" value="{{id}}">
+                    </div>
+                    {{/each}}
                     <a href="#"><i class="fas fa-plus"></i> Add Item</a>
                 </div><br>
                 <div class="invoice-form--summary">
@@ -57,16 +48,13 @@
                         <h4>Subtotal</h4>
                         <h4>2000</h4>
                     </div> -->
-                    <div class="invoice-form--option">
-                        <h4>Taxes</h4>
-                        <span><input type="text" name="invoicetax" value={{invoice.invoicetax}}></span>
-                    </div>
+                   
                     <div class="invoice-form--option">
                         <h4>Total</h4>
-                        <span><input type="text" name="invoicetotal" value={{invoice.invoicetotal}}></span>
+                        <span><input type="text" name="total" value={{invoice.total}}></span>
                     </div>
                 </div> <br>
-                <a href="#" class="button">Print PDF</a>
+                <a href="/invoices/{{invoice.id}}/pdf" class="button">Print PDF</a>
                 <button class="button" type="submit">update Invoice</button>
             </form>
         </div>

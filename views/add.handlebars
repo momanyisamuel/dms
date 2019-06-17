@@ -1,7 +1,7 @@
 <div class="main-section">
     <div class="top-bar">
         <div class="top-bar--title">
-            <h3>Invoice <span style="color:dimgrey">(#0001)</span> </h3>
+            <h3>Invoice (<span id="alert" style="color:dimgrey">#0001</span>) </h3>
         </div>
         <ul class="top-bar--nav">
             <li><a href="/invoices/add"><i class="fas fa-plus"></i> New Invoice</a></li>
@@ -14,7 +14,7 @@
         <div class="invoice-form">
             <br>
             <form action="/invoices/add" method="POST">
-                <div class="invoice-form--address">
+                <div  class="invoice-form--address">
                     <div class="invoice-form--name">
                         <label for="name">Billing to</label>
                         <input type="text" name="customername" placeholder="John Doe"><br>
@@ -23,65 +23,105 @@
                     </div>
                     <div class="invoice-form--date">
                         <label for="date">Date</label>
-                        <input type="text" name="invoicedate" placeholder="12/28/2018"><br>
+                        <input type="text" name="date" placeholder="12/28/2018"><br>
                         <label for="date">Invoice No</label>
-                        <input type="text" name="invoiceno" placeholder="12/28/2018">
+                        <input type="text" id="invoiceno" name="number" placeholder="12/28/2018">
                     </div>
                 </div>
-                <div class="invoice-form--items">
+                <div id="product-list" class="invoice-form--items">
                     <h4>EXPENSES</h4>
-                    <div class="invoice-form--item">
-                        <label for="date"></label>
-                        <input type="text" name="invoiceitem" placeholder="Item one">
-                        <label for="date"></label>
-                        <input type="text" name="price" placeholder="1500">
-                        <label for="date"></label>
-                        <input type="text" name="quantity" placeholder="1">
-                        <label for="date"></label>
-                        <input type="text" name="taxtotal" placeholder="1500">
-                    </div>
-                    <div class="invoice-form--item">
-                        <label for="invoiceitem"></label>
-                        <input type="text" name="invoiceitem" placeholder="Item one">
-                        <label for="price"></label>
-                        <input type="text" name="price" placeholder="1500">
-                        <label for="quantity"></label>
-                        <input type="text" name="quantity" placeholder="1">
-                        <label for="taxtotal"></label>
-                        <input type="text" name="taxtotal" placeholder="1500">
-                    </div><br>
-                    <a href="#"><i class="fas fa-plus"></i> Add Item</a>
+                    
+                    
+                    
                 </div><br>
+                <a href="#" class="add"><i class="fas fa-plus"></i> Add Item</a>
                 <div class="invoice-form--summary">
                     <!-- <div class="invoice-form--option">
                         <h4>Subtotal</h4>
                         <h4>2000</h4>
                     </div> -->
-                    <div class="invoice-form--option">
-                        <h4>Taxes</h4>
-                        <span><input type="text" name="invoicetax" placeholder="10%"></span>
-                    </div>
+                    
                     <div class="invoice-form--option">
                         <h4>Total</h4>
-                        <span><input type="text" name="invoicetotal" placeholder="2000"></span>
+                        <span><input type="text" name="total" placeholder="2000"></span>
                     </div>
                 </div> <br>
-                <a href="#" class="button">Print PDF</a>
                 <button class="button" type="submit">Save Invoice</button>
             </form>
         </div>
         <div class="invoice-options">
             <br>
+            <h4>SERVICES</h4>
             <div class="searchbar">
-                
                 <input type="search" placeholder="search">
             </div>
-            <ul class="option--list">
-                <h4>SERVICES</h4>
-                <li class="service-options"><a href="#">Tooth Filling</a></li>
-                <li class="service-options"><a href="#">Tooth Removal</a></li>
-                <li class="service-options"><a href="#">Tooth Replacement</a></li>
+            <ul id="option--list" class="option--list">
             </ul>
         </div>
     </div>
 </div>
+<script>
+    var a = document.getElementById('invoiceno');
+        
+    a.addEventListener('keyup',function() {
+        document.getElementById('alert').innerHTML = this.value;
+    })
+    
+    function test() {
+        var min = 1;
+        var max = 9999;
+        var num = Math.floor(Math.random() * (max - min + 1)) + min;
+        var timeNow = new Date().getFullYear();
+        var result = document.getElementById('invoiceno').value = 'MD' + num + `/` + timeNow ;
+        return result
+    }
+    window.onload = test;
+
+    data = [{
+        itemName : 'Dental Healtchcare',
+        price: '40000',
+        quantity : '1',
+    },{
+        itemName : 'Dental Hygiene',
+        price: '60000',
+        quantity : '1',
+    }]
+    var list = ''
+    var cell = ''
+    data.forEach(item => {
+        list+=`<li class="service-options"><a href="#" class="item-card"><span class="title">${item.itemName}</span><span class="price" style="display:none">${item.price}</span></a></li>`
+        }
+    );
+    document.getElementById('option--list').innerHTML = list
+    $('.item-card').click(function(){
+        var name = $(this).find('.title').text();
+        var price = $(this).find('.price').text();
+        console.log(name)
+        cell = `<div class="invoice-form--item">
+                            <label for="invoiceitem"></label>
+                            <input type="text" name="name" placeholder=""value="`+name+`">
+                            <label for="price"></label>
+                            <input type="text" name="price" placeholder="" value="`+price+`">
+                            <label for="quantity"></label>
+                            <input type="text" name="quantity" placeholder="1" value="1">
+                            <label for="taxtotal"></label>
+                            <input type="text" name="" placeholder="" value="`+price+`">
+                        </div>`
+        $('#product-list').append(cell);
+    });
+    $('.add').click(function(e){
+        e.preventDefault()
+            
+           cell = `<div class="invoice-form--item">
+                            <label for="invoiceitem"></label>
+                            <input type="text" name="name" placeholder="">
+                            <label for="price"></label>
+                            <input type="text" name="price" placeholder="">
+                            <label for="quantity"></label>
+                            <input type="text" name="quantity" placeholder="" value="1">
+                            <label for="taxtotal"></label>
+                            <input type="text" name="" placeholder="">
+                        </div>`
+        $('#product-list').append(cell);
+    });
+</script>

@@ -1,33 +1,15 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
-const Item = require('../models/Item');
-
-
-const Invoice = db.define('invoice', {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Invoice = sequelize.define('Invoice', {
+    number: DataTypes.STRING,
+    customername:DataTypes.STRING,
+    customeraddress:DataTypes.STRING,
+    date: DataTypes.STRING,
+    total: DataTypes.INTEGER
+  }, {});
+  Invoice.associate = function(models) {
    
-    invoiceno: {
-        type: Sequelize.STRING
-    },
-    invoicedate: {
-        type: Sequelize.DATE
-    },
-    customername: {
-        type: Sequelize.STRING
-    },
-    customeraddress: {
-        type: Sequelize.STRING
-    },
-    invoiceprice: {
-        type: Sequelize.STRING
-    },
-    invoicetax: {
-        type: Sequelize.STRING
-    },
-    invoicetotal: {
-        type: Sequelize.STRING
-    }
-})
-
-Invoice.hasMany(Item)
-
-module.exports = Invoice;
+    Invoice.hasMany(models.Item, { onDelete: 'cascade', hooks: true })
+  };
+  return Invoice;
+};

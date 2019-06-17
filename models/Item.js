@@ -1,26 +1,13 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
-
-const Item = db.define('invoiceitems', {
-   
-    invoiceid: {
-        type: Sequelize.STRING
-    },
-    quantity: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER)
-    },
-    price: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER)
-    },
-    taxrate: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
-    },
-    taxtotal: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
-    },
-    itemname: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
-    }
-})
-
-module.exports = Item;
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Item = sequelize.define('Item', {
+    name: DataTypes.STRING,
+    price: DataTypes.INTEGER,
+    quantity: DataTypes.INTEGER
+  }, {});
+  Item.associate = function(models) {
+    // associations can be defined here
+    Item.belongsTo(models.Invoice)
+  };
+  return Item;
+};
