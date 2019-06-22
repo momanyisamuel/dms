@@ -1,2 +1,5 @@
 node_modules
 pastebin.js
+package-lock.json
+ui
+templates

@@ -1,6 +1,4 @@
-// imports
-@import 'type'
-    
+
 // mixins
 @mixin karla 
     font-family: 'Karla', sans-serif
@@ -13,28 +11,13 @@ body
 a
     text-decoration: none
 
-.black
-    color: #242424
-button
-    border: none
-    padding: 15px 30px
-    margin: 0 0 20px
-    @include karla
-    font-size: 1.2em
-    text-transform: uppercase
-    font-weight: bold
-    color: #333
-    cursor: pointer
 
-label, input 
-    display: block
-    padding-bottom: 8px
 .auth-form
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    margin-top: 60px
+    margin-top: 180px
     .auth-form--title
         margin-bottom: 30px
 .sidebar
@@ -77,6 +60,7 @@ label, input
    .main-content
         display: flex
         width: 100%
+        margin-top: 20px
         .invoice-form
             padding: 0 40px
             width: 70%
@@ -84,7 +68,7 @@ label, input
             width: 30%
             padding: 0 40px
             border-left: 1px solid #f4f7f7
-            height: 88vh
+            position: relative
             .searchbar
                 display: block
                 width: 100%
@@ -97,26 +81,14 @@ label, input
     justify-content: space-between
 .invoice-form--item
     display: flex
-    justify-content: space-around
+    justify-content: space-between
     margin-bottom: 5px
-.invoice-form--item input
-    width: 100%
-.fas.fa-plus
-    font-size: 16px 
+ 
 .invoice-form--option
     display: flex
     justify-content: space-between
     margin-bottom: 5px          
-.invoice-form--option h4
-    margin: 0
 
-.invoice-form--name, .invoice-form--date
-    label
-        display: block
-        font-size: 0.75rem
-        padding-bottom: 8px
-    input
-        display: block
 
 .data-section
     width: 100%

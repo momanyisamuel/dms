@@ -1,43 +1,49 @@
  <div class="main-section">              
     <div class="top-bar">
         <div class="top-bar--title">
-            <h3>Invoices</h3>
         </div>
         <ul class="top-bar--nav">
-            <li><a href="/invoices/add"><i class="fas fa-plus"></i> New Invoice</a></li>
-            <li><a href="/logout" class="black">Sign out</a></li>
+            
         </ul>
     </div>
 
     <div class="main-content">
         <div class="data-section">
-            <table class="bx--data-table bx--data-table--sort">
-                <thead>
-                    <tr>
-                        <th class="bx--table-header-label">Invoice Number</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice Total</th>
-                        <th>PDF</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each invoice}}
-                    <tr>
-                        <td>{{number}} </td>
-                        <td>{{date}}</td>
-                        <td>{{total}}</td>
-                        <td><a href="/invoices/{{id}}/pdf" target="_blank" >Export as pdf</a></td>
-                        <td>
-                            <a href="/invoices/edit/{{id}}" class="button">Edit</a>
-                            <a href="/invoices/delete/{{id}}" class="button">Delete</a>
-                        </td>
-                    </tr>
-                    {{else}}
-                        <p>No invoices available</p>
-                    {{/each}}
-                </tbody>
-            </table>
+            <div class="material-table">
+                <div class="table-header">
+                    <span class="table-title">Invoices</span>
+                    <div class="actions">
+                    <a href="/invoices/add" class="btn-flat nopadding"><i class="material-icons">add_circle</i></a>
+                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <table class="striped" id="datatable">
+                    <thead>
+                        <tr>
+                            <th class="">Invoice Number</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice Total</th>
+                            <th>PDF</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each invoice}}
+                        <tr>
+                            <td>{{number}} </td>
+                            <td>{{date}}</td>
+                            <td>{{total}}</td>
+                            <td><a href="/invoices/{{id}}/pdf" target="_blank" ><i class="material-icons">print</i> </a></td>
+                            <td>
+                                <a href="/invoices/edit/{{id}}" class="button"><i class="material-icons">edit</i></a>
+                            </td>
+                        </tr>
+                        {{else}}
+                            <p>No invoices available</p>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div> 

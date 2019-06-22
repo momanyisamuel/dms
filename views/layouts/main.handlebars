@@ -8,12 +8,17 @@
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/carbon-components.min.css">
+      <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="/css/datatables.css"/>
     <link rel="stylesheet" href="/css/style.css">
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous" ></script>
+    
 </head>
 <body>
      <div class="wrapper">
@@ -27,11 +32,14 @@
             </ul>
 
             <div class="sidebar-user">
-                <p><i class="far fa-user-circle"></i> John Doe</p>
+                <a href="/logout"><i class="far fa-user-circle"></i> Logout</a>
             </div>
         </div>
         {{{ body }}}
     </div>
     
+    <script src="/js/materialize.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/bundle.js"> </script>
 </body>
 </html>

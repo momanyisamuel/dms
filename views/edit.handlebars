@@ -1,12 +1,9 @@
 <div class="main-section">
     <div class="top-bar">
         <div class="top-bar--title">
-            <h3>Invoice <span style="color:dimgrey">({{invoice.number}})</span> </h3>
+            <h3>Invoice <span style="color:dimgrey">({{invoice.number}}) <a href="/invoices/{{invoice.id}}/pdf" class="button"><i class="material-icons">print</i></a></span> </h3>
         </div>
-        <ul class="top-bar--nav">
-            <li><a href="/invoices/add"><i class="fas fa-plus"></i> New Invoice</a></li>
-            <li><a href="#" class="black">Sign out</a></li>
-        </ul>
+        
     </div>
     
     <div class="main-content">
@@ -23,53 +20,83 @@
                     </div>
                     <div class="invoice-form--date">
                         <label for="date">Date</label>
-                        <input type="text" name="date" value={{invoice.date}}><br>
+                        <input type="text" name="date" value="{{invoice.date}}"><br>
                         <label for="number">Invoice No</label>
-                        <input type="text" name="number" value={{invoice.number}}>
+                        <input type="text" name="number" value="{{invoice.number}}">
                     </div>
                 </div>
                 <div class="invoice-form--items">
-                    <h4>EXPENSES</h4>
+                    <h6>Invoice Items</h6>
                     {{#each invoice.Items }}
-                    <div class="invoice-form--item">
-                        <label for="name"></label>
-                        <input type="text" name="name" placeholder="Item one" value="{{name}}">
-                        <label for="quantity"></label>
-                        <input type="text" name="quantity" placeholder="1" value="{{quantity}}">
-                        <label for="price"></label>
-                        <input type="text" name="price" placeholder="" value="{{price}}">
-                        <input type="hidden" name="id" value="{{id}}">
-                    </div>
+                        <div class="invoice-form--item">
+                            <div class="children">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" placeholder="Item one" value="{{name}}">
+                            </div>
+                            <div class="children">
+                                <label for="quantity">Quantity</label>
+                                <input type="text" name="quantity" placeholder="1" value="{{quantity}}">
+                            </div>
+                            <div class="children">
+                                <label for="price">Price</label>
+                                <input type="text" name="price" placeholder="" value="{{price}}">
+                            </div>
+                            <input type="hidden" name="id" value="{{id}}">
+                        </div>
                     {{/each}}
-                    <a href="#"><i class="fas fa-plus"></i> Add Item</a>
                 </div><br>
-                <div class="invoice-form--summary">
-                    <!-- <div class="invoice-form--option">
-                        <h4>Subtotal</h4>
-                        <h4>2000</h4>
-                    </div> -->
-                   
-                    <div class="invoice-form--option">
-                        <h4>Total</h4>
-                        <span><input type="text" name="total" value={{invoice.total}}></span>
+                <div class="invoice-form--item">
+                    <div class="children">
+                        <h6>Total</h6>
+                        <span></span>
+                    </div>
+                    <div class="children">
+                        <label for="total">KES</label>
+                        <input type="text" name="total" value="{{invoice.total}}">
                     </div>
                 </div> <br>
-                <a href="/invoices/{{invoice.id}}/pdf" class="button">Print PDF</a>
-                <button class="button" type="submit">update Invoice</button>
+                
+                <button class="btn waves-effect waves-light" type="submit">Update Invoice</button>
             </form>
         </div>
-        <div class="invoice-options">
-            <br>
+        <div class="invoice-options" style="" >
+            <h6>SERVICES</h6>
             <div class="searchbar">
-                
-                <input type="search" placeholder="search">
+                <input type="search" class="search" placeholder="search">
             </div>
-            <ul class="option--list">
-                <h4>SERVICES</h4>
-                <li class="service-options"><a href="#">Tooth Filling</a></li>
-                <li class="service-options"><a href="#">Tooth Removal</a></li>
-                <li class="service-options"><a href="#">Tooth Replacement</a></li>
-            </ul>
+            <div class="list-item"style="overflow: auto; height: 500px">
+                <ul id="option--lists" class="option--list">
+                </ul>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    var list = ''
+    var cell = ''
+   $.get('/json/services.json',function(data){
+         // data is a JS object parsed from a JSON response
+    },'json').then(data => {
+        {{!-- console.log(data) --}}
+        data.forEach(item => {
+            console.log(item)
+            list += `<li class="service-options"><a href="#" class="item-card"><span class="title">${item.itemName}</span><span class="price" style="display:none">${item.price}</span></a></li>`
+        });
+        $('#option--lists').append(list)
+    }) ;
+
+    $('.search').keyup(function(){
+        
+        var searchText = $(this).val();
+        
+        $('#option--lists > li').each(function(){
+            
+            var currentLiText = $(this).text(),
+            showCurrentLi = currentLiText.toLowerCase().indexOf(searchText.toLowerCase()) !== -1;
+            
+            $(this).toggle(showCurrentLi);
+            
+        });     
+    });
+    
+</script>
