@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const models = require('../models');
-const puppeteer = require('puppeteer');
-var passport = require('passport')
 const auth = require('../config/auth')
-const sequelize = require('sequelize');
 const invoiceService = require('../services/invoiceService')
 
 
@@ -14,7 +10,7 @@ router.get('/add', auth.ensureAunthenticated, invoiceService.newInvoice)
 //add an invoice
 router.post('/add', auth.ensureAunthenticated, invoiceService.addInvoice)
 //show single invoice
-router.get('/:id', invoiceService.readOne)
+router.get('/:id',  invoiceService.readOne)
 router.get('/:id/pdf', invoiceService.printInvoice)
 //edit single invoice
 router.get('/edit/:id', auth.ensureAunthenticated, invoiceService.editInvoice)

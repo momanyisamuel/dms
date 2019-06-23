@@ -12,8 +12,9 @@
             <div class="material-table">
                 <div class="table-header">
                     <span class="table-title">Invoices</span>
+                    
                     <div class="actions">
-                    <a href="/invoices/add" class="btn-flat nopadding"><i class="material-icons">add_circle</i></a>
+                    <a href="/invoices/add" class="btn-flat nopadding"><i class="material-icons" style="color: #26a69a">add_circle</i><span class="new badge"style="margin-top: 7px;">add </span></a>
                     <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
                     </div>
                 </div>
@@ -32,14 +33,12 @@
                         <tr>
                             <td>{{number}} </td>
                             <td>{{date}}</td>
-                            <td>{{total}}</td>
+                            <td>{{total}} </td>
                             <td><a href="/invoices/{{id}}/pdf" target="_blank" ><i class="material-icons">print</i> </a></td>
                             <td>
                                 <a href="/invoices/edit/{{id}}" class="button"><i class="material-icons">edit</i></a>
                             </td>
                         </tr>
-                        {{else}}
-                            <p>No invoices available</p>
                         {{/each}}
                     </tbody>
                 </table>

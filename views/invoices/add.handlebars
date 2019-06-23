@@ -17,18 +17,22 @@
                             <label for="name">Billing to</label>
                         </div>
                         <div class="input-field">
-                            <input type="text" id="customeraddrs" name="customeraddress">
+                            <input type="text" id="customeraddrs" name="customeraddress" required>
                             <label for="customeraddrs">Address</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="branch" name="branch" required>
+                            <label for="branch">Branch</label>
                         </div>
                     </div>
                     <div class="invoice-form--date">
                         <div class="input-field">
                             <label for="date">Date</label>
-                            <input type="text" class="datepicker" name="date">
+                            <input type="text" class="datepicker" name="date" required>
                         </div>
                         <div class="">
                             <label for="invoiceno">Invoice No</label>
-                            <input type="text" id="invoiceno" name="number">
+                            <input type="text" id="invoiceno" name="number" required>
                         </div>
                     </div>
                 </div>
@@ -40,7 +44,7 @@
                     <div class="invoice-form--option">
                         <h5>Total</h5>
                         <span> 
-                            <label for="totals">KES</label><input type="text" class="totals"  name="total" value="0">
+                            <label for="totals">KES</label><input type="text" class="totals"  name="total" placeholder="0" required>
                         </span>
                     </div>
                 </div> 
@@ -51,7 +55,7 @@
         <div class="invoice-options" style="" >
             <h6>SERVICES</h6>
             <div class="searchbar">
-                <input type="search" class="search" placeholder="search">
+                <input type="search" class="search" placeholder="search" >
             </div>
             <div class="list-item"style="overflow: auto; height: 500px">
                 <ul id="option--list" class="option--list" style="padding-right: 12px">

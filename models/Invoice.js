@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     customername:DataTypes.STRING,
     customeraddress:DataTypes.STRING,
     date: DataTypes.STRING,
-    total: DataTypes.INTEGER
+    total: DataTypes.INTEGER,
+    branch: DataTypes.STRING
   }, {});
   Invoice.associate = function(models) {
    

@@ -6,7 +6,7 @@ const sequelize = require('sequelize');
 exports.showInvoices = (req,res) => {
     models.Invoice.findAll()
     .then( invoice => {
-        res.render('invoice', {
+        res.render('invoices/invoice', {
             invoice
         })
     })
@@ -15,14 +15,14 @@ exports.showInvoices = (req,res) => {
     })
 }
 //display invoice form
-exports.newInvoice = (req, res) => res.render('add')
+exports.newInvoice = (req, res) => res.render('invoices/add')
 
 //add an invoice
 exports.addInvoice = (req, res) => {
 
     let data = [req.body];
-    let { number,date,customername,customeraddress,total } = req.body
-    models.Invoice.create({number,date,customername,customeraddress,total})
+    let { number,date,customername,customeraddress,total,branch } = req.body
+    models.Invoice.create({number,date,customername,customeraddress,total,branch})
     .then((invoice) => {
 
         let reqname = req.body.name
@@ -62,7 +62,7 @@ exports.readOne = (req, res) => {
         }]
    })
    .then( invoice => {
-        res.render('view', {
+        res.render('invoices/view', {
             invoice, layout: false
         })
     })
@@ -92,8 +92,7 @@ exports.editInvoice = (req, res) => {
     }]
   })
   .then(invoice => {
-    // console.log(invoice)
-    res.render('edit', {invoice})
+    res.render('invoices/edit', {invoice})
   })
   .catch(err => console.log(err))
 }
@@ -105,9 +104,11 @@ exports.updateInvoice = (req, res) => {
         date: req.body.date, 
         customername: req.body.customername, 
         customeraddress: req.body.customeraddress, 
-        total: req.body.total
+        total: req.body.total,
+        branch : req.body.branch
       }
-      models.Invoice.update(updateValues, { where:{ id:req.params.id } } ).then((invoice) => {
+      models.Invoice.update(updateValues, { where:{ id:req.params.id } } )
+       .then((invoice) => {
         //update invoice items
         var data = [req.body]
         var reqname = req.body.name

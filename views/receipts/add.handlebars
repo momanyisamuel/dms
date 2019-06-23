@@ -1,0 +1,211 @@
+<div class="main-section">
+    <div class="top-bar">
+        <div class="top-bar--title">
+            <h3>Receipt (<span id="alert" style="color:dimgrey">#0001</span>) </h3>
+        </div>
+        
+    </div>
+    
+    <div class="main-content">
+        
+        <div class="invoice-form">
+            <form action="/receipts/add" method="POST">
+                <div  class="invoice-form--address">
+                    <div class="invoice-form--name">
+                        <div class="input-field">
+                            <input type="text" id="customer" name="customer" placeholder="John Doe" class="validate" required>
+                            <label for="customer">Billing to</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="customeraddres" name="customeraddress" placeholder="Ngong Road" required>
+                            <label for="customeraddres">Address</label>
+                        </div>
+                        <div class="input-field">
+                            <select name="paymentType">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Insurance">Insurance</option>
+                            </select>
+                            
+                            <label>Payment Method</label>
+                        </div>
+                    </div>
+                    <div class="invoice-form--date">
+                        <div class="input-field">
+                            <label for="date">Date</label>
+                            <input type="text" id="currdatepicker" class="datepicker" name="date" required>
+                        </div>
+                        <div class="">
+                            <label for="receiptno">Receipt No</label>
+                            <input type="text" id="receiptno" name="number" required>
+                        </div>
+                        <div class="">
+                            <label for="branch">Branch</label>
+                            <input type="text" id="branch" name="branch" required>
+                        </div>
+                    </div>
+                </div>
+                <div id="product-list" class="invoice-form--items">
+                    <h6>Invoice Items</h6>
+                </div>
+                <br>
+                <div class="invoice-form--summary">
+                    <div class="invoice-form--option">
+                        <h5>Total</h5>
+                        <span> 
+                            <label for="totals">KES</label><input type="text" class="totals"  name="total" placeholder="0" required>
+                        </span>
+                    </div>
+                </div> 
+                <br>
+                <button class="btn waves-effect waves-light" type="submit">Save Receipt</button>
+            </form>
+        </div>
+        <div class="invoice-options" style="" >
+            <h6>SERVICES</h6>
+            <div class="searchbar">
+                <input type="search" class="search" placeholder="search" >
+            </div>
+            <div class="list-item"style="overflow: auto; height: 500px">
+                <ul id="option--list" class="option--list" style="padding-right: 12px">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    
+    var a = document.getElementById('receiptno');
+        
+    a.addEventListener('keyup',function() {
+        document.getElementById('alert').innerHTML = this.value;
+    })
+    
+    function test() {
+        var min = 1;
+        var max = 9999;
+        var num = Math.floor(Math.random() * (max - min + 1)) + min;
+        var timeNow = new Date().getFullYear();
+        var result = document.getElementById('receiptno').value = 'MD' + num + `/` + timeNow ;
+        return result
+    }
+    window.onload = test;
+    var list = ''
+    var cell = ''
+    $.get('/json/services.json',function(data){
+         // data is a JS object parsed from a JSON response
+    },'json').then(data => {
+        data.forEach(item => {
+            list += `<li class="service-options"><a href="#" class="item-card"><span class="title">${item.itemName}</span><span class="price" style="display:none">${item.price}</span></a></li>`
+        });
+        $('#option--list').append(list)
+        $('.item-card').click(itemClicked);
+    });
+    document.getElementById('option--list').innerHTML = list
+    $('.search').keyup(function(){
+        
+        var searchText = $(this).val();
+        
+        $('#option--list > li').each(function(){
+            
+            var currentLiText = $(this).text(),
+            showCurrentLi = currentLiText.toLowerCase().indexOf(searchText.toLowerCase()) !== -1;
+            
+            $(this).toggle(showCurrentLi);
+            
+        });     
+    });
+    let totalItems = []
+    
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', ready)
+    } else {
+        ready()
+    }
+
+    function ready() {
+        $('select').formSelect();
+        
+        var removeItemButtons = document.getElementsByClassName('delete')
+        for(var i=0; i < removeItemButtons.length; i++) {
+            var button = removeItemButtons[i]
+            button.addEventListener('click', removeItem)
+        }
+
+        var quantityInputs = document.getElementsByClassName('invoice-quantity')
+        for(var i=0; i < quantityInputs.length; i++) {
+            var input = quantityInputs[i]
+
+            input.addEventListener('change', quantityChanged)
+        }
+    }
+    
+    function removeItem (event) {
+        var buttonClicked = event.target
+        buttonClicked.parentElement.parentElement.remove()
+        updateTotal()
+    }
+
+    function quantityChanged(event) {
+        var input = event.target
+        if(isNaN(input.value) || input.value <=0) {
+            input.value = 1
+        }
+        updateTotal()
+    }
+    function itemClicked (event) {
+        var name = $(this).find('.title').text();
+        var price = $(this).find('.price').text();
+        totalItems.push(price)
+        addItem(name, price)
+        updateTotal()
+    }
+    function addItem(name, price) {
+        cell = `<div class="invoice-form--item">
+                            <div class="children">
+                                <input class="invoice-name" type="text" name="name" placeholder="${name}" value="${name}">
+                                <label for="invoice-name">Name</label>
+                            </div>
+                            <div class="children">
+                                <input class="invoice-quantity" type="text" name="quantity" value="1">
+                                <label for="invoice-quantity">Quantity</label>
+                            </div>
+                            <div class="children">
+                                <input class="invoice-price" type="text"  name="price" value="${price}">
+                                <label for="invoice-price">Price</label>
+                            </div>
+                            <a href="#" class="delete" style="margin-top: 12px;"><i class="material-icons ">delete_forever</i></a>
+                        </div>`
+        $('#product-list').append(cell);
+        $('.delete').click(removeItem)
+        $('.invoice-quantity').change(quantityChanged)
+    }
+    
+    function updateTotal () {
+        var itemRowContainer = document.getElementsByClassName('invoice-form--items')[0]
+        var itemRows = itemRowContainer.getElementsByClassName('invoice-form--item')
+        var total = 0
+        for(var i=0; i<itemRows.length; i++) {
+            var itemRow = itemRows[i]
+            var priceElement = itemRow.getElementsByClassName('invoice-price')[0]
+            var quantityElement = itemRow.getElementsByClassName('invoice-quantity')[0]
+            var totalPrice = priceElement.value
+            var totalQuantity = quantityElement.value
+            total = total + (totalPrice*totalQuantity)
+        }
+        total = Math.round(total * 100) / 100
+        document.getElementsByClassName('totals')[0].value = total
+    }
+    
+        
+    function getTotals(data){
+        var total = 0;
+        for(var i = 0 ; i < data.length; i++){
+        total = total + data[i]/1;
+        }
+        return total.toFixed(0)
+    }
+    
+   
+</script>

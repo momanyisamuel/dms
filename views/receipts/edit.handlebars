@@ -1,0 +1,102 @@
+<div class="main-section">
+    <div class="top-bar">
+        <div class="top-bar--title">
+            <h3>Receipt<span style="color:dimgrey">({{receipt.number}}) <a href="/receipts/{{receipt.id}}/pdf" class="button"><i class="material-icons">print</i></a></span> </h3>
+        </div>
+        
+    </div>
+    
+    <div class="main-content">
+        
+        <div class="invoice-form">
+            <br>
+            <form action="/receipts/edit/{{receipt.id}}" method="POST">
+                <div class="invoice-form--address">
+                    <div class="invoice-form--name">
+                        <label for="customername">Billing to</label>
+                        <input type="text" name="customer" value="{{ receipt.customer }}"><br>
+                        <label for="customeraddress">Address</label>
+                        <input type="text" name="customeraddress" value={{receipt.customeraddress}}>
+                    </div>
+                    <div class="invoice-form--date">
+                        <label for="date">Date</label>
+                        <input type="text" name="date" value="{{receipt.date}}"><br>
+                        <label for="number">Receipt No</label>
+                        <input type="text" name="number" value="{{receipt.number}}">
+                    </div>
+                </div>
+                <div class="invoice-form--items">
+                    <h6>Receipt Items</h6>
+                    {{#each receipt.Items }}
+                        <div class="invoice-form--item">
+                            <div class="children">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" placeholder="Item one" value="{{name}}">
+                            </div>
+                            <div class="children">
+                                <label for="quantity">Quantity</label>
+                                <input type="text" name="quantity" placeholder="1" value="{{quantity}}">
+                            </div>
+                            <div class="children">
+                                <label for="price">Price</label>
+                                <input type="text" name="price" placeholder="" value="{{price}}">
+                            </div>
+                            <input type="hidden" name="id" value="{{id}}">
+                        </div>
+                    {{/each}}
+                </div><br>
+                <div class="invoice-form--item">
+                    <div class="children">
+                        <h6>Total</h6>
+                        <span></span>
+                    </div>
+                    <div class="children">
+                        <label for="total">KES</label>
+                        <input type="text" name="total" value="{{receipt.total}}">
+                    </div>
+                </div> <br>
+                
+                <button class="btn waves-effect waves-light" type="submit">Update Receipt</button>
+            </form>
+        </div>
+        <div class="invoice-options" style="" >
+            <h6>SERVICES</h6>
+            <div class="searchbar">
+                <input type="search" class="search" placeholder="search">
+            </div>
+            <div class="list-item"style="overflow: auto; height: 500px">
+                <ul id="option--lists" class="option--list">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var list = ''
+    var cell = ''
+   $.get('/json/services.json',function(data){
+         // data is a JS object parsed from a JSON response
+    },'json').then(data => {
+        {{!-- console.log(data) --}}
+        data.forEach(item => {
+            console.log(item)
+            list += `<li class="service-options"><a href="#" class="item-card"><span class="title">${item.itemName}</span><span class="price" style="display:none">${item.price}</span></a></li>`
+        });
+        $('#option--lists').append(list)
+    }) ;
+
+    $('.search').keyup(function(){
+        
+        var searchText = $(this).val();
+        
+        $('#option--lists > li').each(function(){
+            
+            var currentLiText = $(this).text(),
+            showCurrentLi = currentLiText.toLowerCase().indexOf(searchText.toLowerCase()) !== -1;
+            
+            $(this).toggle(showCurrentLi);
+            
+        });     
+    });
+    
+</script>

@@ -28,36 +28,40 @@
 </style>
 <div class="container">
         <div class="invoice-header">
-                <div class="invoice--logo"></div>
-                <div><h3>INVOICE</h3></div>
+                <div class="invoice--logo"><img src="/images/logo.png" alt="" style="width: 50%;"></div>
+                <div>
+                    <h3>RECEIPT</h3>
+                    
+                </div>
         </div>
+        <br>
         <div class="invoice-body">
             <div class="invoice--heading">
                 <div id="customer">
                     <table id="meta">
                         <tr>
-                            <td class="meta-head">InvoiceNo</td>
-                            <td>{{ invoice.number }}</td>
+                            <td class="meta-head">ReceiptNo</td>
+                            <td>{{ receipt.number }}</td>
                         </tr>
                         <tr>
                             <td class="meta-head">Date</td>
-                            <td>{{ invoice.date }}</td>
+                            <td>{{ receipt.date }}</td>
                         </tr>
                         <tr>
                             <td class="meta-head">Branch</td>
-                            <td>Nairobi</td>
+                            <td>{{ receipt.branch }}</td>
                         </tr>
-                        <tr>
+                        {{!-- <tr>
                             <td class="meta-head">Doctor</td>
                             <td>Dr Samuel Chweya</td>
-                        </tr>
+                        </tr> --}}
                     </table>
                 </div>
                 <div class="invoice--address">
-                    <p>Customer Name: {{ invoice.customername }}</p>
-                    <p>Covered by: APA Insurance</p>
-                    <p>Membership NO: {{invoice.number}}</p>
-                    <p>UHID: 2347</p>
+                    <p>Customer Name: {{ receipt.customer }}</p>
+                    <p>Payment Covered by: {{ receipt.paymentType }}</p>
+                    {{!-- <p>Membership NO: {{receipt.number}}</p> --}}
+                    {{!-- <p>UHID: 2347</p> --}}
                 </div>
             </div>
             <table class="invoice--table">
@@ -72,7 +76,7 @@
                 </thead>
                 
                 <tbody>
-                    {{#each invoice.Items }}
+                    {{#each receipt.Items }}
                     <tr class="item-row">
                         <td class="item-name">{{ name }}</td>
                         <td>{{ price }}</td>
@@ -86,25 +90,23 @@
                 <tfoot>
                     <tr>
                         <td colspan="2" class="blank"> </td>
-                        <td colspan="2" class="total-line">Tax</td>
-                        <td class="total-value"><div id="subtotal">{{ tax }}</div></td>
-                    </tr>
-                    <tr>
-        
-                        <td colspan="2" class="blank"> </td>
                         <td colspan="2" class="total-line">Net Total</td>
-                        <td class="total-value"><div id="total">{{ invoice.total }}</div></td>
+                        <td class="total-value"><div id="total">{{ receipt.total }}</div></td>
                     </tr>
                 </tfoot>
                 
             </table>
         </div>
         <div>
-            <p>Prepared By: Rose Doe</p>
+            <p>Prepared By: My Dentist</p>
+            <p>Hurlingham, Argwings Kodhek Rd,</p>
+            <p>Chaka Court, Suite 5</p>
+            <p>Tel: 0771 669 006</p> 
+            <p>Mobile:  0726 061 561</p>
         </div>
         <br><br><br>
         <div>
-            <p>I, the (undersigned), being the patient/guardian, confirm use of the services listed on this invoice. I also confirm that i shall  be fully and severally liable for the hospital bills, if for any reason my insurance/employer declines to settle the bill amount.</p>
+            <p>I, the (undersigned), being the patient/guardian, confirm use of the services listed on this receipt. I also confirm that i shall  be fully and severally liable for the hospital bills, if for any reason my insurance/employer declines to settle the bill amount.</p>
         </div>
         <br><br>
         <div class="footer">

@@ -3,27 +3,28 @@ const puppeteer = require('puppeteer');
 const sequelize = require('sequelize');
 
 
-exports.showInvoices = (req,res) => {
-    models.Invoice.findAll()
-    .then( invoice => {
-        res.render('invoice', {
-            invoice
+exports.showReceipts = (req,res) => {
+    models.Receipt.findAll()
+    .then( receipt => {
+        res.render('receipts/receipt', {
+          receipt
         })
     })
     .catch(err => {
         console.log( err);
     })
 }
-//display invoice form
-exports.newInvoice = (req, res) => res.render('add')
+//display receipt form
+exports.newReceipt = (req, res) => res.render('receipts/add')
 
-//add an invoice
-exports.addInvoice = (req, res) => {
+//add an receipt
+exports.addReceipt = (req, res) => {
 
     let data = [req.body];
-    let { number,date,customername,customeraddress,total } = req.body
-    models.Invoice.create({number,date,customername,customeraddress,total})
-    .then((invoice) => {
+    console.log(req.body)
+    let { number,date,customer,customeraddress,total,branch,paymentType,attendingDoctor } = req.body
+    models.Receipt.create({number,date,customer,customeraddress,total,branch,paymentType, attendingDoctor})
+    .then((receipt) => {
 
         let reqname = req.body.name
         if (typeof reqname === "object") {
@@ -31,7 +32,7 @@ exports.addInvoice = (req, res) => {
           for(let i = 0; i<data.length; i++){
                 for(let j = 0; j<data[i].name.length; j++){
                     passData.push({
-                    InvoiceId : invoice.id, 
+                    ReceiptId : receipt.id, 
                     name : data[i].name[j], 
                     price: data[i].price[j], 
                     quantity : data[i].quantity[j] 
@@ -41,40 +42,40 @@ exports.addInvoice = (req, res) => {
           models.Item.bulkCreate(passData)
         } else {
           models.Item.create({
-            InvoiceId : invoice.id,
+            ReceiptId : receipt.id,
             name: req.body.name,
             price: req.body.price,
             quantity: req.body.quantity
           })
 
         }
-        res.redirect('/invoices')
+        res.redirect('/receipts')
     })
     .catch(err => console.log(err))
 }
 
-//show single invoice
+//show single receipt
 exports.readOne = (req, res) => { 
-   models.Invoice.findOne({
+   models.Receipt.findOne({
         where: {id : req.params.id },
         include : [{
         model : models.Item
         }]
    })
-   .then( invoice => {
-        res.render('view', {
-            invoice, layout: false
+   .then( receipt => {
+        res.render('receipts/view', {
+          receipt, layout: false
         })
     })
 }
 
-// print invoice
-exports.printInvoice = (req,res) => {
+// print receipt
+exports.printReceipt = (req,res) => {
     (async () => {
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
         const id = req.params.id
-        await page.goto('http://localhost:8000/invoices/'+id, {waitUntil: 'networkidle0'}) //invoices/:id/
+        await page.goto('http://localhost:8000/receipts/'+id, {waitUntil: 'networkidle0'}) //receipts/:id/
         const buffer = await page.pdf({format: 'A4'}) //configurations
         res.type('application/pdf')
         res.send(buffer)
@@ -82,33 +83,36 @@ exports.printInvoice = (req,res) => {
     })()
 }
 
-//edit single invoice
-exports.editInvoice = (req, res) => { 
+//edit single receipt
+exports.editReceipt = (req, res) => { 
 
-  models.Invoice.findOne({
+  models.Receipt.findOne({
     where: {id : req.params.id },
     include : [{
       model : models.Item
     }]
   })
-  .then(invoice => {
-    // console.log(invoice)
-    res.render('edit', {invoice})
+  .then(receipt => {
+    res.render('receipts/edit', {receipt})
   })
   .catch(err => console.log(err))
 }
 
-//edit single invoice
-exports.updateInvoice = (req, res) => { 
-      // update invoice
-      let updateValues = { number: req.body.number, 
+//edit single receipt
+exports.updateReceipt = (req, res) => { 
+      // update receipt
+      let updateValues = { 
+        number: req.body.number, 
         date: req.body.date, 
-        customername: req.body.customername, 
+        customer: req.body.customer, 
         customeraddress: req.body.customeraddress, 
-        total: req.body.total
+        total: req.body.total,
+        branch: req.body.branch,
+        paymentType: req.body.paymentType,
+        attendingDoctor : req.body.attendingDoctor
       }
-      models.Invoice.update(updateValues, { where:{ id:req.params.id } } ).then((invoice) => {
-        //update invoice items
+      models.Receipt.update(updateValues, { where:{ id:req.params.id } } ).then((receipt) => {
+        //update receipt items
         var data = [req.body]
         var reqname = req.body.name
         if (typeof reqname === "object") {
@@ -116,7 +120,7 @@ exports.updateInvoice = (req, res) => {
           for(let i = 0; i<data.length; i++){
             for(let j = 0; j<data[i].name.length; j++){
               passData.push({ 
-                InvoiceId :req.params.id,
+                ReceiptId :req.params.id,
                 id:data[i].id[j],
                 name: data[i].name[j], 
                 price: data[i].price[j], 
@@ -132,7 +136,7 @@ exports.updateInvoice = (req, res) => {
             }
           );
           Promise.all(updateData).then((success) => {
-              res.redirect('/invoices')
+              res.redirect('/receipts')
           });
         } else {
           models.Item.update({
@@ -140,22 +144,22 @@ exports.updateInvoice = (req, res) => {
             price: req.body.price,
             quantity: req.body.quantity
           }, { where:{ id:req.body.id } })
-          res.redirect('/invoices')
+          res.redirect('/receipts')
         }
       }).catch(e => console.log(e));
 }
 
-exports.deleteInvoice = (req, res) => { 
+exports.deleteReceipt = (req, res) => { 
 
-  models.Invoice.destroy({
+  models.Receipt.destroy({
     where: {id : req.params.id },
     include : [{
       model : models.Item
     }]
   })
-  .then(invoice => {
+  .then(receipt => {
     
-    res.redirect('/invoices')
+    res.redirect('/receipts')
   })
   .catch(err => console.log(err))
 }

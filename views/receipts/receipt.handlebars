@@ -1,0 +1,47 @@
+<div class="main-section">  
+    <div class="top-bar">
+        <div class="top-bar--title">
+        </div>
+        <ul class="top-bar--nav">
+            
+        </ul>
+    </div>            
+    <div class="main-content">
+        <div class="data-section">
+            <div class="material-table">
+                <div class="table-header">
+                    <span class="table-title">Receipts</span>
+                    
+                    <div class="actions">
+                    <a href="/receipts/add" class="btn-flat nopadding"><i class="material-icons" style="color: #26a69a">add_circle</i><span class="new badge"style="margin-top: 7px;">add </span></a>
+                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <table class="striped" id="datatable">
+                    <thead>
+                        <tr>
+                            <th class="">Receipt Number</th>
+                            <th>Receipt Date</th>
+                            <th>Receipt Total</th>
+                            <th>PDF</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each receipt}}
+                            <tr>
+                                <td>{{number}} </td>
+                                <td>{{date}}</td>
+                                <td>{{total}}    <span class="new badge blue" data-badge-caption="">{{paymentType}}</span></td>
+                                <td><a href="/receipts/{{id}}/pdf" target="_blank" ><i class="material-icons">print</i> </a></td>
+                                <td>
+                                    <a href="/receipts/edit/{{id}}" class="button"><i class="material-icons">edit</i></a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 

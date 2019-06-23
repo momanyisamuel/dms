@@ -4,10 +4,8 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    phoneNumber: DataTypes.INTEGER,
-    nationalId: DataTypes.STRING,
     email: DataTypes.STRING,
-    userStatus: DataTypes.INTEGER,
+    userStatus: DataTypes.STRING,
     password: DataTypes.STRING
   }, {});
   User.associate = function(models) {

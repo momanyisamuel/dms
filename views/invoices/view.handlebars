@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>invoice</title>
-</head>
 <style>
     body {
         font-family: 'Lato', sans-serif;
@@ -34,39 +26,42 @@
     }
 
 </style>
-<body>
-    <div class="container">
+<div class="container">
         <div class="invoice-header">
-                <div class="invoice--logo"><img src="logo.png" alt=""></div>
-                <div><h3>INVOICE</h3></div>
+                <div class="invoice--logo"><img src="/images/logo.png" alt="" style="width: 50%;"></div>
+                <div>
+                    <h3>INVOICE</h3>
+                    
+                </div>
         </div>
+        <br>
         <div class="invoice-body">
             <div class="invoice--heading">
                 <div id="customer">
                     <table id="meta">
                         <tr>
                             <td class="meta-head">InvoiceNo</td>
-                            <td>{{ invoiceNo }}</td>
+                            <td>{{ invoice.number }}</td>
                         </tr>
                         <tr>
                             <td class="meta-head">Date</td>
-                            <td>{{ date }}</td>
+                            <td>{{ invoice.date }}</td>
                         </tr>
                         <tr>
                             <td class="meta-head">Branch</td>
                             <td>Nairobi</td>
                         </tr>
-                        <tr>
+                        {{!-- <tr>
                             <td class="meta-head">Doctor</td>
                             <td>Dr Samuel Chweya</td>
-                        </tr>
+                        </tr> --}}
                     </table>
                 </div>
                 <div class="invoice--address">
-                    <p>Customer Name: Mr Samuel Maingi</p>
-                    <p>Covered by: APA Insurance</p>
-                    <p>Membership NO: 01687493421</p>
-                    <p>UHID: 2347</p>
+                    <p>Customer Name: {{ invoice.customername }}</p>
+                    {{!-- <p>Covered by: APA Insurance</p> --}}
+                    {{!-- <p>Membership NO: {{invoice.number}}</p> --}}
+                    {{!-- <p>UHID: 2347</p> --}}
                 </div>
             </div>
             <table class="invoice--table">
@@ -81,33 +76,33 @@
                 </thead>
                 
                 <tbody>
+                    {{#each invoice.Items }}
                     <tr class="item-row">
-                        <td class="item-name">{{ item }}</td>
-                        <td>{{ cost }}</td>
+                        <td class="item-name">{{ name }}</td>
+                        <td>{{ price }}</td>
                         <td>{{ quantity }}</td>
                         <td></td>
                         <td><span class="price">{{ price }}</span></td>
                     </tr>
+                    {{/each}}
                 </tbody>
 
                 <tfoot>
                     <tr>
                         <td colspan="2" class="blank"> </td>
-                        <td colspan="2" class="total-line">Tax</td>
-                        <td class="total-value"><div id="subtotal">{{ tax }}</div></td>
-                    </tr>
-                    <tr>
-        
-                        <td colspan="2" class="blank"> </td>
                         <td colspan="2" class="total-line">Net Total</td>
-                        <td class="total-value"><div id="total">{{ total }}</div></td>
+                        <td class="total-value"><div id="total">{{ invoice.total }}</div></td>
                     </tr>
                 </tfoot>
                 
             </table>
         </div>
         <div>
-            <p>Prepared By: Rose Doe</p>
+            <p>Prepared By: My Dentist</p>
+            <p>Hurlingham, Argwings Kodhek Rd,</p>
+            <p>Chaka Court, Suite 5</p>
+            <p>Tel: 0771 669 006</p> 
+            <p>Mobile:  0726 061 561</p>
         </div>
         <br><br><br>
         <div>
@@ -119,5 +114,3 @@
             <p>Stamp</p>
         </div>
     </div>
-</body>
-</html>
