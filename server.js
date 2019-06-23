@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 var passport = require('passport')
 const session = require("express-session")
-// const { Client } = require('pg')
+const { Client } = require('pg')
 
 const app = express();
 
@@ -31,12 +31,12 @@ db.sequelize.sync({
 .catch(err => {
   console.error('Unable to connect to the database:', err);
 });
-// heroku connection
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: true,
-// });
-// client.connect();
+heroku connection
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+client.connect();
 app.use('/', require('./routes/login'))
 app.use('/invoices',  require('./routes/invoice'))
 // Receipt
