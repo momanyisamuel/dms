@@ -31,7 +31,7 @@ db.sequelize.sync({
 .catch(err => {
   console.error('Unable to connect to the database:', err);
 });
-heroku connection
+// heroku connection
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
