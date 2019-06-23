@@ -71,7 +71,12 @@ exports.readOne = (req, res) => {
 // print invoice
 exports.printInvoice = (req,res) => {
     (async () => {
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+          ]
+        })
         const page = await browser.newPage()
         const id = req.params.id
         await page.goto('https://dentalms.herokuapp.com/invoices/'+id, {waitUntil: 'networkidle0'}) //invoices/:id/
@@ -79,7 +84,7 @@ exports.printInvoice = (req,res) => {
         res.type('application/pdf')
         res.send(buffer)
         browser.close()
-    })()
+    }).catch(err => console.log(err))()
 }
 
 //edit single invoice
