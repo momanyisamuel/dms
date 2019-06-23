@@ -72,7 +72,12 @@ exports.readOne = (req, res) => {
 // print receipt
 exports.printReceipt = (req,res) => {
     (async () => {
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+          ]
+        })
         const page = await browser.newPage()
         const id = req.params.id
         await page.goto('https://dentalms.herokuapp.com/receipts/'+id, {waitUntil: 'networkidle0'}) //receipts/:id/
