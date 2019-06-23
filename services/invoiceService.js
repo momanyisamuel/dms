@@ -84,7 +84,7 @@ exports.printInvoice = (req,res) => {
         res.type('application/pdf')
         res.send(buffer)
         browser.close()
-    }).catch(err => console.log(err))()
+    })()
 }
 
 //edit single invoice
