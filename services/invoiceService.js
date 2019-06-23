@@ -74,7 +74,7 @@ exports.printInvoice = (req,res) => {
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
         const id = req.params.id
-        await page.goto('http://www.mydentistkenya.com/invoices/'+id, {waitUntil: 'networkidle0'}) //invoices/:id/
+        await page.goto('https://dentalms.herokuapp.com/invoices/'+id, {waitUntil: 'networkidle0'}) //invoices/:id/
         const buffer = await page.pdf({format: 'A4'}) //configurations
         res.type('application/pdf')
         res.send(buffer)
