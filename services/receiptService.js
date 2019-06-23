@@ -71,16 +71,14 @@ exports.readOne = (req, res) => {
 
 // print receipt
 exports.printReceipt = (req,res) => {
-    (async () => {
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
         const id = req.params.id
-        await page.goto('http://www.mydentistkenya.com/receipts/'+id, {waitUntil: 'networkidle0'}) //receipts/:id/
+        await page.goto('http://localhost:8000/receipts/'+id, {waitUntil: 'networkidle0'}) //receipts/:id/
         const buffer = await page.pdf({format: 'A4'}) //configurations
         res.type('application/pdf')
         res.send(buffer)
         browser.close()
-    })()
 }
 
 //edit single receipt
