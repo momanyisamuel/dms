@@ -15,8 +15,8 @@
                    
                     <div class="invoice-form--name">
                         <div class="input-field">
-                            <input type="text" id="name" name="customername" value="{{receipt.customer}}" class="validate" required>
-                            <label for="name">Patient Name</label>
+                            <input type="text" id="customer" name="customer" value="{{receipt.customer}}" class="validate" required>
+                            <label for="customer">Patient Name</label>
                         </div>
                         <div class="input-field">
                             <input type="text" id="customeraddrs" name="customeraddress" value="{{receipt.customeraddress}}" required>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="children">
                         <label for="total">KES</label>
-                        <input type="text" name="total" value="{{receipt.total}}">
+                        <input type="text" name="total" value="{{receipt.total}}" disabled="disabled">
                     </div>
                 </div> <br>
                 
