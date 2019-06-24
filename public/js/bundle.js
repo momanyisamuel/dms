@@ -1,16 +1,17 @@
 (function(window, document, undefined) {
     $('.tabs').tabs();
+    $('select').formSelect();
     $('#currdatepicker').datepicker()
-    var dateToday = new Date();
-    $("#currdatepicker").change(function () {
-        var updatedDate = $(this).val();
-        var instance = $(this).data("datepicker");
-        var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, updatedDate, instance.settings);
+    // var dateToday = new Date();
+    // $("#currdatepicker").change(function () {
+    //     var updatedDate = $(this).val();
+    //     var instance = $(this).data("datepicker");
+    //     var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, updatedDate, instance.settings);
 
-        if (date < dateToday) {
-            $(this).datepicker("setDate", dateToday);
-        }
-    });
+    //     if (date < dateToday) {
+    //         $(this).datepicker("setDate", dateToday);
+    //     }
+    // });
     console.log('hello world')
     var factory = function($, DataTable) {
 

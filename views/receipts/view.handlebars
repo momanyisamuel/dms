@@ -40,28 +40,36 @@
                 <div id="customer">
                     <table id="meta">
                         <tr>
-                            <td class="meta-head">ReceiptNo</td>
-                            <td>{{ receipt.number }}</td>
+                            <td class="meta-head">ReceiptNo:</td>
+                            <td>MD/{{ receipt.id }}/2019</td>
                         </tr>
                         <tr>
-                            <td class="meta-head">Date</td>
+                            <td class="meta-head">Date:</td>
                             <td>{{ receipt.date }}</td>
                         </tr>
                         <tr>
-                            <td class="meta-head">Branch</td>
-                            <td>{{ receipt.branch }}</td>
+                            <td class="meta-head">Branch:</td>
+                            <td>{{receipt.branch}}</td>
                         </tr>
-                        {{!-- <tr>
-                            <td class="meta-head">Doctor</td>
-                            <td>Dr Samuel Chweya</td>
-                        </tr> --}}
+                        <tr>
+                            <td class="meta-head">Doctor:</td>
+                            <td>{{receipt.attendingDoctor}}</td>
+                        </tr>
+                        <tr>
+                            <td class="meta-head">Patient Name:</td>
+                            <td>{{receipt.customername}}</td>
+                        </tr>
+                        <tr>
+                            <td class="meta-head">Principal Member:</td>
+                            <td>{{receipt.principalMember}}</td>
+                        </tr>
                     </table>
                 </div>
                 <div class="invoice--address">
-                    <p>Customer Name: {{ receipt.customer }}</p>
-                    <p>Payment Covered by: {{ receipt.paymentType }}</p>
-                    {{!-- <p>Membership NO: {{receipt.number}}</p> --}}
-                    {{!-- <p>UHID: 2347</p> --}}
+                    <p>Company Name: {{ receipt.companyName }}</p>
+                    <p>Covered by: {{receipt.paymentType}}</p>
+                    <p>Membership NO: MDMNO/2019/{{receipt.id}}</p>
+                    <p>FileNo: MDFID/2019/{{receipt.id}}</p>
                 </div>
             </div>
             <table class="invoice--table">

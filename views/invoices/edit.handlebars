@@ -1,7 +1,7 @@
 <div class="main-section">
     <div class="top-bar">
         <div class="top-bar--title">
-            <h3>Invoice <span style="color:dimgrey">({{invoice.number}}) <a href="/invoices/{{invoice.id}}/pdf" class="button"><i class="material-icons">print</i></a></span> </h3>
+            <h4>Invoice <span style="color:dimgrey">(#MD/{{invoice.id}}/2019) <a href="/invoices/{{invoice.id}}/pdf" class="button"><i class="material-icons">print</i></a></span> </h4>
         </div>
         
     </div>
@@ -13,29 +13,65 @@
             <form action="/invoices/edit/{{invoice.id}}" method="POST">
                 <div class="invoice-form--address">
                     <div class="invoice-form--name">
-                        <label for="customername">Billing to</label>
-                        <input type="text" name="customername" value="{{ invoice.customername }}"><br>
-                        <label for="customeraddress">Address</label>
-                        <input type="text" name="customeraddress" value={{invoice.customeraddress}}>
+                        <div class="input-field">
+                            <input type="text" id="name" name="customername" value="{{ invoice.customername }}" class="validate" required>
+                            <label for="name">Patient Name</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="customeraddrs" name="customeraddress" value="{{invoice.customeraddress}}" required>
+                            <label for="customeraddrs">Address</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="principalMember" name="principalMember" value="{{invoice.principalMember}}" required>
+                            <label for="principalMember">Principal Member</label>
+                        </div>
+                        <div class="input-field">
+                            <select name="paymentType">
+                                <option value="" disabled selected>{{invoice.paymentType}}</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Insurance">Insurance</option>
+                            </select>
+                            <label>Payment Method</label>
+                        </div>
                     </div>
                     <div class="invoice-form--date">
-                        <label for="date">Date</label>
-                        <input type="text" name="date" value="{{invoice.date}}"><br>
-                        <label for="number">Invoice No</label>
-                        <input type="text" name="number" value="{{invoice.number}}">
+                        <div class="input-field">
+                            <label for="date">Date</label>
+                            <input type="text" id="currdatepicker" class="datepicker" value="{{invoice.date}}" disabled="disabled" name="date" required>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="companyName" name="companyName" value="{{invoice.companyName}}" required>
+                            <label for="companyName">Company Name</label>
+                        </div>
+                        <div class="input-field" style="margin-bottom: 1.5rem;">
+                            <select name="attendingDoctor" aria-placeholder="">
+                                <option value="" disabled selected>{{invoice.attendingDoctor}}</option>
+                                <option value="Dr Samuel Chweya">Dr Samuel Chweya</option>
+                            </select>
+                            <label>Attending Doctor</label>
+                        </div>
+                        <div class="input-field">
+                            <select name="branch" aria-placeholder="">
+                                <option value="" disabled selected>{{invoice.branch}}</option>
+                                <option value="Mombasa">Mombasa</option>
+                                <option value="Nairobi">Nairobi</option>
+                            </select>
+                            <label>Branch</label>
+                        </div>
                     </div>
                 </div>
+                
                 <div class="invoice-form--items">
                     <h6>Invoice Items</h6>
                     {{#each invoice.Items }}
                         <div class="invoice-form--item">
                             <div class="children">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" placeholder="Item one" value="{{name}}">
+                                <input type="text" name="name" placeholder="Item one" value="{{name}}" disabled="disabled">
                             </div>
                             <div class="children">
                                 <label for="quantity">Quantity</label>
-                                <input type="text" name="quantity" placeholder="1" value="{{quantity}}">
+                                <input type="text" name="quantity" placeholder="1" value="{{quantity}}" >
                             </div>
                             <div class="children">
                                 <label for="price">Price</label>

@@ -22,8 +22,8 @@ exports.addReceipt = (req, res) => {
 
     let data = [req.body];
     console.log(req.body)
-    let { number,date,customer,customeraddress,total,branch,paymentType,attendingDoctor } = req.body
-    models.Receipt.create({number,date,customer,customeraddress,total,branch,paymentType, attendingDoctor})
+    let { number,date,customer,customeraddress,principalMember,companyName,attendingDoctor,total,branch,paymentType } = req.body
+    models.Receipt.create({number,date,customer,customeraddress,principalMember,companyName,attendingDoctor,total,branch,paymentType})
     .then((receipt) => {
 
         let reqname = req.body.name
@@ -110,8 +110,9 @@ exports.updateReceipt = (req, res) => {
         number: req.body.number, 
         date: req.body.date, 
         customer: req.body.customer, 
-        customeraddress: req.body.customeraddress, 
-        total: req.body.total,
+        customeraddress: req.body.customeraddress,
+        principalMember: req.body.principalMember,
+        companyName: req.body.companyName,
         branch: req.body.branch,
         paymentType: req.body.paymentType,
         attendingDoctor : req.body.attendingDoctor

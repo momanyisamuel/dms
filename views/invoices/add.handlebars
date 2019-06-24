@@ -1,7 +1,7 @@
 <div class="main-section">
     <div class="top-bar">
         <div class="top-bar--title">
-            <h3>Invoice (<span id="alert" style="color:dimgrey">#0001</span>) </h3>
+            <h5>Invoice (<span id="alert" style="color:dimgrey">#0001</span>) </h5>
         </div>
         
     </div>
@@ -14,25 +14,48 @@
                     <div class="invoice-form--name">
                         <div class="input-field">
                             <input type="text" id="name" name="customername" placeholder="John Doe" class="validate" required>
-                            <label for="name">Billing to</label>
+                            <label for="name">Patient Name</label>
                         </div>
                         <div class="input-field">
-                            <input type="text" id="customeraddrs" name="customeraddress" required>
+                            <input type="text" id="customeraddrs" name="customeraddress" placeholder="Address" required>
                             <label for="customeraddrs">Address</label>
                         </div>
                         <div class="input-field">
-                            <input type="text" id="branch" name="branch" required>
-                            <label for="branch">Branch</label>
+                            <input type="text" id="principalMember" name="principalMember" placeholder="Principal Member" required>
+                            <label for="principalMember">Principal Member</label>
+                        </div>
+                        <div class="input-field">
+                            <select name="paymentType">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Insurance">Insurance</option>
+                            </select>
+                            <label>Payment Method</label>
                         </div>
                     </div>
                     <div class="invoice-form--date">
                         <div class="input-field">
                             <label for="date">Date</label>
-                            <input type="text" id="currdatepicker" class="datepicker" name="date" required>
+                            <input type="text" id="currdatepicker" class="datepicker" placeholder="MM/DD/YYYY" name="date" required>
                         </div>
-                        <div class="">
-                            <label for="invoiceno">Invoice No</label>
-                            <input type="text" id="invoiceno" name="number" required>
+                        <div class="input-field">
+                            <input type="text" id="companyName" name="companyName" placeholder="Company Name" required>
+                            <label for="companyName">Company Name</label>
+                        </div>
+                        <div class="input-field" style="margin-bottom: 1.5rem;">
+                            <select name="attendingDoctor">
+                                <option value="" disabled selected>Choose Doctor</option>
+                                <option value="Dr Samuel Chweya">Dr Samuel Chweya</option>
+                            </select>
+                            <label>Attending Doctor</label>
+                        </div>
+                        <div class="input-field">
+                            <select name="branch">
+                                <option value="" disabled selected>Choose your branch</option>
+                                <option value="Mombasa">Mombasa</option>
+                                <option value="Nairobi">Nairobi</option>
+                            </select>
+                            <label>Branch</label>
                         </div>
                     </div>
                 </div>
@@ -65,21 +88,22 @@
     </div>
 </div>
 <script>
-    var a = document.getElementById('invoiceno');
+    {{!-- var a = document.getElementById('invoiceno');
         
     a.addEventListener('keyup',function() {
         document.getElementById('alert').innerHTML = this.value;
-    })
-    
-    function test() {
-        var min = 1;
-        var max = 9999;
-        var num = Math.floor(Math.random() * (max - min + 1)) + min;
-        var timeNow = new Date().getFullYear();
-        var result = document.getElementById('invoiceno').value = 'MD' + num + `/` + timeNow ;
-        return result
+    }) --}}
+
+    function noDisplay() {
+        var count = localStorage.getItem("count")==null?1:localStorage.getItem("count");
+        count=Number(count)+1;
+        localStorage.setItem("count", count);
+        {{!-- var results = document.getElementById('invoiceno').value= count; --}}
+        return results
     }
-    window.onload = test;
+    
+    
+    {{!-- window.onload = noDisplay; --}}
     var list = ''
     var cell = ''
     $.get('/json/services.json',function(data){

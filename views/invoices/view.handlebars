@@ -28,7 +28,15 @@
 </style>
 <div class="container">
         <div class="invoice-header">
-                <div class="invoice--logo"><img src="/images/logo.png" alt="" style="width: 50%;"></div>
+                <div class="invoice--logo">
+                    <img src="/images/logo.png" alt="" style="width: 50%;">
+                    <div class="addressInfo" style="font-size: 8px">
+                        <p>Hurlingham, Argwings Kodhek Rd,</p>
+                        <p>Chaka Court, Suite 5</p>
+                        <p>Tel: 0771 669 006</p> 
+                        <p>Mobile:  0726 061 561</p>
+                    </div>
+                </div>
                 <div>
                     <h3>INVOICE</h3>
                     
@@ -40,28 +48,36 @@
                 <div id="customer">
                     <table id="meta">
                         <tr>
-                            <td class="meta-head">InvoiceNo</td>
-                            <td>{{ invoice.number }}</td>
+                            <td class="meta-head">InvoiceNo:</td>
+                            <td>MD/{{ invoice.id }}/2019</td>
                         </tr>
                         <tr>
-                            <td class="meta-head">Date</td>
+                            <td class="meta-head">Date:</td>
                             <td>{{ invoice.date }}</td>
                         </tr>
                         <tr>
-                            <td class="meta-head">Branch</td>
-                            <td>Nairobi</td>
+                            <td class="meta-head">Branch:</td>
+                            <td>{{invoice.branch}}</td>
                         </tr>
-                        {{!-- <tr>
-                            <td class="meta-head">Doctor</td>
-                            <td>Dr Samuel Chweya</td>
-                        </tr> --}}
+                        <tr>
+                            <td class="meta-head">Doctor:</td>
+                            <td>{{invoice.attendingDoctor}}</td>
+                        </tr>
+                        <tr>
+                            <td class="meta-head">Patient Name:</td>
+                            <td>{{invoice.customername}}</td>
+                        </tr>
+                        <tr>
+                            <td class="meta-head">Principal Member:</td>
+                            <td>{{invoice.principalMember}}</td>
+                        </tr>
                     </table>
                 </div>
                 <div class="invoice--address">
-                    <p>Customer Name: {{ invoice.customername }}</p>
-                    {{!-- <p>Covered by: APA Insurance</p> --}}
-                    {{!-- <p>Membership NO: {{invoice.number}}</p> --}}
-                    {{!-- <p>UHID: 2347</p> --}}
+                    <p>Company Name: {{ invoice.companyName }}</p>
+                    <p>Covered by: {{invoice.paymentType}}</p>
+                    <p>Membership NO: MDMNO/2019/{{invoice.id}}</p>
+                    <p>FileNo: MDFID/2019/{{invoice.id}}</p>
                 </div>
             </div>
             <table class="invoice--table">
@@ -99,10 +115,7 @@
         </div>
         <div>
             <p>Prepared By: My Dentist</p>
-            <p>Hurlingham, Argwings Kodhek Rd,</p>
-            <p>Chaka Court, Suite 5</p>
-            <p>Tel: 0771 669 006</p> 
-            <p>Mobile:  0726 061 561</p>
+            
         </div>
         <br><br><br>
         <div>
@@ -114,3 +127,15 @@
             <p>Stamp</p>
         </div>
     </div>
+    <script>
+        {{!-- function set() {
+            var min = 1;
+            var max = 9999;
+            var enum = num++;
+            var timeNow = new Date().getFullYear();
+            var result = document.getElementById('invoiceno').value = 'MD' + enum + `/` + timeNow ;
+            return result
+        }
+
+        window.onload = set --}}
+    </script>
