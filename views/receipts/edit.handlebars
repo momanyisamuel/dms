@@ -27,12 +27,16 @@
                             <label for="principalMember">Principal Member</label>
                         </div>
                         <div class="input-field">
+                            <input type="text" id="fileNo" name="fileNo" placeholder="File Number" value="{{receipt.fileNo}}" required>
+                            <label for="fileNo">File Number</label>
+                        </div>
+                        <div class="input-field">
                             <select name="paymentType">
                                 <option value="" disabled selected>{{receipt.paymentType}}</option>
                                 <option value="Cash">Cash</option>
-                                <option value="Insurance">Insurance</option>
+                                <option value="MPESA">MPESA</option>
                             </select>
-                            <label>Payment Method</label>
+                            <label>Pay Via</label>
                         </div>
                     </div>
                     <div class="invoice-form--date">
@@ -44,10 +48,17 @@
                             <input type="text" id="companyName" name="companyName" value="{{receipt.companyName}}" required>
                             <label for="companyName">Company Name</label>
                         </div>
+                        <div class="input-field">
+                            <input type="text" id="membershipNumber" name="membershipNumber" value="{{receipt.membershipNumber}}" required>
+                            <label for="membershipNumber">Membership Number</label>
+                        </div>
                         <div class="input-field" style="margin-bottom: 1.5rem;">
                             <select name="attendingDoctor" aria-placeholder="">
                                 <option value="" disabled selected>{{receipt.attendingDoctor}}</option>
-                                <option value="Dr Samuel Chweya">Dr Samuel Chweya</option>
+                                <option value="Dr. Samuel Chweya">Dr. Samson Manduku</option>
+                                <option value="Dr. Yvonne Nabiswa">Dr. Yvonne Nabiswa</option>
+                                <option value="Dr. Odhiambo Stephen">Dr. Odhiambo Stephen</option>
+                                <option value="Dr. Peter Okong'o">Dr. Peter Okong'o</option>
                             </select>
                             <label>Attending Doctor</label>
                         </div>
@@ -67,15 +78,15 @@
                         <div class="invoice-form--item">
                             <div class="children">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" placeholder="Item one" value="{{name}}" disabled="disabled">
+                                <input type="text" name="name" placeholder="Item one" placeholder="{{name}}" disabled="disabled">
                             </div>
                             <div class="children">
                                 <label for="quantity">Quantity</label>
-                                <input type="text" name="quantity" placeholder="1" value="{{quantity}}">
+                                <input type="text" name="quantity" placeholder="1" placeholder="{{quantity}}" disabled="disabled">
                             </div>
                             <div class="children">
                                 <label for="price">Price</label>
-                                <input type="text" name="price" placeholder="" value="{{price}}">
+                                <input type="text" name="price" placeholder="" placeholder="{{price}}" disabled="disabled">
                             </div>
                             <input type="hidden" name="id" value="{{id}}">
                         </div>
