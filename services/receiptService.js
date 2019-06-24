@@ -117,7 +117,7 @@ exports.updateReceipt = (req, res) => {
         paymentType: req.body.paymentType,
         attendingDoctor : req.body.attendingDoctor
       }
-      models.Receipt.update(updateValues, { where:{ id:req.params.id } } ).then((receipt) => {
+      models.Receipt.update(updateValues, { where:{ id:req.body.id } } ).then((receipt) => {
         //update receipt items
         var data = [req.body]
         var reqname = req.body.name
@@ -126,7 +126,7 @@ exports.updateReceipt = (req, res) => {
           for(let i = 0; i<data.length; i++){
             for(let j = 0; j<data[i].name.length; j++){
               passData.push({ 
-                ReceiptId :req.params.id,
+                ReceiptId :receipt.id,
                 id:data[i].id[j],
                 name: data[i].name[j], 
                 price: data[i].price[j], 
