@@ -20,7 +20,7 @@
                         </div>
                         <div class="input-field">
                             <input type="text" id="customeraddrs" name="customeraddress" value="{{receipt.customeraddress}}" required>
-                            <label for="customeraddrs">Address</label>
+                            <label for="customeraddrs">Phone Number</label>
                         </div>
                         <div class="input-field">
                             <input type="text" id="principalMember" name="principalMember" value="{{receipt.principalMember}}" required>
@@ -53,9 +53,9 @@
                             <label for="membershipNumber">Membership Number</label>
                         </div>
                         <div class="input-field" style="margin-bottom: 1.5rem;">
-                            <select name="attendingDoctor" aria-placeholder="">
+                            <select name="attendingDoctor">
                                 <option value="" disabled selected>{{receipt.attendingDoctor}}</option>
-                                <option value="Dr. Samuel Chweya">Dr. Samson Manduku</option>
+                                <option value="Dr. Samson Manduku<">Dr. Samson Manduku</option>
                                 <option value="Dr. Yvonne Nabiswa">Dr. Yvonne Nabiswa</option>
                                 <option value="Dr. Odhiambo Stephen">Dr. Odhiambo Stephen</option>
                                 <option value="Dr. Peter Okong'o">Dr. Peter Okong'o</option>
