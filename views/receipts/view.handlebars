@@ -28,13 +28,33 @@
 </style>
 <div class="container">
         <div class="invoice-header">
-                <div class="invoice--logo"><img src="/images/logo.png" alt="" style="width: 50%;"></div>
+                <div class="invoice--logo">
+                    <img src="/images/logo.png" alt="" style="width: 50%;">
+                </div>
                 <div>
                     <h3>RECEIPT</h3>
-                    
                 </div>
-        </div>
-        <br>
+        </div> <br>
+        <div class="invoice-header">
+            <div class="invoice--logo">
+                <div class="addressInfo" style="font-size: 8px">
+                    <h4 style="margin: 0">Nairobi Branch</h4>
+                    <p>Hurlingham, Argwings Kodhek Rd,</p>
+                    <p>Chaka Court, Suite 5</p>
+                    <p>Tel: 0771 669 006</p> 
+                    <p>Mobile:  0725 289 986</p>
+                </div>
+            </div>
+            <div>
+                <div class="div" style="font-size: 8px">
+                    <h4 style="margin: 0">Mombasa Branch</h4>
+                    <p>Jubilee, Arcade No.28,</p>
+                    <p>Mobile Avenue</p>
+                    <p>Tel: 0777 669 006</p> 
+                    <p>Mobile:  0725 669 006</p>
+                </div>
+            </div>
+        </div><br>
         <div class="invoice-body">
             <div class="invoice--heading">
                 <div id="customer">
@@ -68,8 +88,8 @@
                 <div class="invoice--address">
                     <p>Company Name: {{ receipt.companyName }}</p>
                     <p>Covered by: {{receipt.paymentType}}</p>
-                    <p>Membership NO: MDMNO/2019/{{receipt.id}}</p>
-                    <p>FileNo: MDFID/2019/{{receipt.id}}</p>
+                    <p>Membership NO: {{receipt.membershipNumber}}</p>
+                    <p>FileNo: {{receipt.fileNo}}</p>
                 </div>
             </div>
             <table class="invoice--table">
@@ -87,10 +107,10 @@
                     {{#each receipt.Items }}
                     <tr class="item-row">
                         <td class="item-name">{{ name }}</td>
-                        <td>{{ price }}</td>
-                        <td>{{ quantity }}</td>
+                        <td class="final-price">{{ price }}</td>
+                        <td class="final-quantity">{{ quantity }}</td>
                         <td></td>
-                        <td><span class="price">{{ price }}</span></td>
+                        <td><span class="total"></span></td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -107,10 +127,6 @@
         </div>
         <div>
             <p>Prepared By: My Dentist</p>
-            <p>Hurlingham, Argwings Kodhek Rd,</p>
-            <p>Chaka Court, Suite 5</p>
-            <p>Tel: 0771 669 006</p> 
-            <p>Mobile:  0726 061 561</p>
         </div>
         <br><br><br>
         <div>
@@ -122,3 +138,6 @@
             <p>Stamp</p>
         </div>
     </div>
+    <script>
+
+    </script>

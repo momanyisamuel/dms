@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       total: DataTypes.INTEGER,
       paymentType: DataTypes.STRING,
       branch: DataTypes.STRING,
-      attendingDoctor: DataTypes.STRING
+      attendingDoctor: DataTypes.STRING,
+      fileNo: DataTypes.STRING,
+      membershipNumber: DataTypes.STRING
   }, {});
   Receipt.associate = function(models) {
     // associations can be defined here

@@ -21,8 +21,8 @@ exports.newInvoice = (req, res) => res.render('invoices/add')
 exports.addInvoice = (req, res) => {
 
     let data = [req.body];
-    let { number,date,customername,customeraddress,principalMember,companyName,attendingDoctor,total,branch,paymentType } = req.body
-    models.Invoice.create({number,date,customername,customeraddress,principalMember,companyName,attendingDoctor,total,branch,paymentType})
+    let { number,date,customername,customeraddress,principalMember,membershipNumber,fileNo,companyName,attendingDoctor,total,branch,paymentType } = req.body
+    models.Invoice.create({number,date,customername,customeraddress,principalMember,membershipNumber,fileNo,companyName,attendingDoctor,total,branch,paymentType})
     .then((invoice) => {
 
         let reqname = req.body.name
@@ -113,7 +113,9 @@ exports.updateInvoice = (req, res) => {
         companyName: req.body.companyName,
         branch: req.body.branch,
         paymentType: req.body.paymentType,
-        attendingDoctor : req.body.attendingDoctor
+        attendingDoctor : req.body.attendingDoctor,
+        membershipNumber: req.body.membershipNumber,
+        fileNo: req.body.fileNo
       }
       models.Invoice.update(updateValues, { where:{ id:req.params.id } } )
        .then((invoice) => {

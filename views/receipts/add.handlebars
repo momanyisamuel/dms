@@ -10,10 +10,10 @@
         
         <div class="invoice-form">
             <form action="/receipts/add" method="POST">
-                <div  class="invoice-form--address">
+                <div class="invoice-form--address">
                     <div class="invoice-form--name">
                         <div class="input-field">
-                            <input type="customer" id="customer" name="customer" placeholder="John Doe" class="validate" required>
+                            <input  type="text" id="customer" name="customer" placeholder="John Doe" required>
                             <label for="customer">Patient Name</label>
                         </div>
                         <div class="input-field">
@@ -25,12 +25,21 @@
                             <label for="principalMember">Principal Member</label>
                         </div>
                         <div class="input-field">
+                            <input type="text" id="fileNo" name="fileNo" placeholder="File Number" required>
+                            <label for="fileNo">File Number</label>
+                        </div>
+                        
+                        <div class="input-field">
                             <select name="paymentType">
                                 <option value="" disabled selected>Choose your option</option>
-                                <option value="Cash">Cash</option>
-                                <option value="Insurance">Insurance</option>
+                                <option value="AON Minet">AON Minet</option>
+                                <option value="Liason Insurance">Liason Insurance</option>
+                                <option value="APA Insurance">APA Insurance</option>
+                                <option value="Madison Insurance">Madison Insurance</option>
+                                <option value="NHIF">NHIF</option>
+                                <option value="Resolution Insurance">Resolution Insurance</option>
+                                <option value="KCB Corporate Cover">KCB Corporate Cover</option>
                             </select>
-                            
                             <label>Payment Method</label>
                         </div>
                     </div>
@@ -43,10 +52,17 @@
                             <input type="text" id="companyName" name="companyName" placeholder="Company Name" required>
                             <label for="companyName">Company Name</label>
                         </div>
+                        <div class="input-field">
+                            <input type="text" id="membershipNumber" name="membershipNumber" placeholder="Membership Number" required>
+                            <label for="membershipNumber">Membership Number</label>
+                        </div>
                         <div class="input-field" style="margin-bottom: 1.5rem;">
                             <select name="attendingDoctor">
                                 <option value="" disabled selected>Choose Doctor</option>
-                                <option value="Dr Samuel Chweya">Dr Samuel Chweya</option>
+                                <option value="Dr. Samuel Chweya">Dr. Samson Manduku</option>
+                                <option value="Dr. Yvonne Nabiswa">Dr. Yvonne Nabiswa</option>
+                                <option value="Dr. Odhiambo Stephen">Dr. Odhiambo Stephen</option>
+                                <option value="Dr. Peter Okong'o">Dr. Peter Okong'o</option>
                             </select>
                             <label>Attending Doctor</label>
                         </div>

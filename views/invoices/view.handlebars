@@ -27,22 +27,34 @@
 
 </style>
 <div class="container">
-        <div class="invoice-header">
+         <div class="invoice-header">
                 <div class="invoice--logo">
                     <img src="/images/logo.png" alt="" style="width: 50%;">
-                    <div class="addressInfo" style="font-size: 8px">
-                        <p>Hurlingham, Argwings Kodhek Rd,</p>
-                        <p>Chaka Court, Suite 5</p>
-                        <p>Tel: 0771 669 006</p> 
-                        <p>Mobile:  0726 061 561</p>
-                    </div>
                 </div>
                 <div>
-                    <h3>INVOICE</h3>
-                    
+                    <h3>RECEIPT</h3>
                 </div>
-        </div>
-        <br>
+        </div> <br>
+        <div class="invoice-header">
+            <div class="invoice--logo">
+                <div class="addressInfo" style="font-size: 8px">
+                    <h4 style="margin: 0">Nairobi Branch</h4>
+                    <p>Hurlingham, Argwings Kodhek Rd,</p>
+                    <p>Chaka Court, Suite 5</p>
+                    <p>Tel: 0771 669 006</p> 
+                    <p>Mobile:  0725 289 986</p>
+                </div>
+            </div>
+            <div>
+                <div class="div" style="font-size: 8px">
+                    <h4 style="margin: 0">Mombasa Branch</h4>
+                    <p>Jubilee, Arcade No.28,</p>
+                    <p>Mobile Avenue</p>
+                    <p>Tel: 0777 669 006</p> 
+                    <p>Mobile:  0725 669 006</p>
+                </div>
+            </div>
+        </div><br>
         <div class="invoice-body">
             <div class="invoice--heading">
                 <div id="customer">
@@ -76,8 +88,8 @@
                 <div class="invoice--address">
                     <p>Company Name: {{ invoice.companyName }}</p>
                     <p>Covered by: {{invoice.paymentType}}</p>
-                    <p>Membership NO: MDMNO/2019/{{invoice.id}}</p>
-                    <p>FileNo: MDFID/2019/{{invoice.id}}</p>
+                    <p>Membership NO: {{invoice.membershipNumber}}</p>
+                    <p>FileNo: {{invoice.fileNo}}
                 </div>
             </div>
             <table class="invoice--table">
