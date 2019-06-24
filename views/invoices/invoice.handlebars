@@ -23,6 +23,7 @@
                         <tr>
                             <th class="">Invoice Number</th>
                             <th>Invoice Date</th>
+                            <th>Customer</th>
                             <th>Invoice Total</th>
                             <th>PDF</th>
                             <th>Actions</th>
@@ -33,7 +34,8 @@
                         <tr>
                             <td>MD/{{id}}/2019</td>
                             <td>{{date}}</td>
-                            <td>{{total}} </td>
+                            <td>{{customername}}</td>
+                            <td>{{total}} <span class="new badge blue" data-badge-caption="">{{paymentType}}</span></td>
                             <td><a href="/invoices/{{id}}/pdf" target="_blank" ><i class="material-icons">print</i> </a></td>
                             <td>
                                 <a href="/invoices/edit/{{id}}" class="button"><i class="material-icons">edit</i></a>
