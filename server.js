@@ -41,5 +41,6 @@ app.use('/', require('./routes/login'))
 app.use('/invoices',  require('./routes/invoice'))
 // Receipt
 app.use('/receipts',  require('./routes/receipt'))
+//start server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, console.log('app started...'));
