@@ -34,7 +34,8 @@ exports.addInvoice = (req, res) => {
                     InvoiceId : invoice.id, 
                     name : data[i].name[j], 
                     price: data[i].price[j], 
-                    quantity : data[i].quantity[j] 
+                    quantity : data[i].quantity[j],
+                    itemTotal: data[i].itemTotal[j]
                 })
             }
           }
@@ -44,7 +45,8 @@ exports.addInvoice = (req, res) => {
             InvoiceId : invoice.id,
             name: req.body.name,
             price: req.body.price,
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            itemTotal:req.body.itemTotal
           })
 
         }

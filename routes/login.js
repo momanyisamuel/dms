@@ -22,7 +22,7 @@ router.post('/random',(req,res,next) => {
   .then((user) => {res.send({message: user})})
 });
 
-router.get('/logout', function(req, res){
+router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });

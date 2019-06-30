@@ -162,8 +162,13 @@
         var quantityInputs = document.getElementsByClassName('invoice-quantity')
         for(var i=0; i < quantityInputs.length; i++) {
             var input = quantityInputs[i]
-
             input.addEventListener('change', quantityChanged)
+        }
+
+        var priceInputs = document.getElementsByClassName('invoice-price')
+        for( let i = 0; i < priceInputs.length; i++) {
+            var priceInput = priceInputs[i]
+            priceInput.addEventListener('change', priceChanged)
         }
     }
     
@@ -171,6 +176,7 @@
         var buttonClicked = event.target
         buttonClicked.parentElement.parentElement.remove()
         updateTotal()
+        itemTotals()
     }
 
     function quantityChanged(event) {
@@ -179,6 +185,28 @@
             input.value = 1
         }
         updateTotal()
+        itemTotals()
+    }
+    function priceChanged(event) {
+        var priceInput = event.target
+        if(isNaN(priceInput.value) || priceInput.value <=0) {
+            priceInput.value = 0
+        }
+        updateTotal()
+        itemTotals()
+    }
+    function itemTotals(event) {
+        var itemRowContainer = document.getElementsByClassName('invoice-form--items')[0]
+        var itemRows = itemRowContainer.getElementsByClassName('invoice-form--item')
+        var total = 0
+        for(var i=0; i<itemRows.length; i++) {
+            var itemRow = itemRows[i]
+            var priceElement = itemRow.getElementsByClassName('invoice-price')[0]
+            var quantityElement = itemRow.getElementsByClassName('invoice-quantity')[0]
+            console.log(document.getElementsByClassName('invoice-total')[0])
+            document.getElementsByClassName('invoice-total')[i].value = priceElement.value*quantityElement.value
+        }
+
     }
     function itemClicked (event) {
         var name = $(this).find('.title').text();
@@ -186,6 +214,7 @@
         totalItems.push(price)
         addItem(name, price)
         updateTotal()
+        itemTotals()
     }
     function addItem(name, price) {
         cell = `<div class="invoice-form--item">
@@ -200,6 +229,10 @@
                             <div class="children">
                                 <input class="invoice-price" type="text"  name="price" value="${price}">
                                 <label for="invoice-price">Price</label>
+                            </div>
+                            <div class="children">
+                                <input class="invoice-total" type="text"  name="itemTotal" value="">
+                                <label for="invoice-total">Total</label>
                             </div>
                             <a href="#" class="delete" style="margin-top: 12px;"><i class="material-icons ">delete_forever</i></a>
                         </div>`

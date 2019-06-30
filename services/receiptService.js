@@ -35,7 +35,8 @@ exports.addReceipt = (req, res) => {
                     ReceiptId : receipt.id, 
                     name : data[i].name[j], 
                     price: data[i].price[j], 
-                    quantity : data[i].quantity[j] 
+                    quantity : data[i].quantity[j],
+                    itemTotal: data[i].itemTotal[j] 
                 })
             }
           }
@@ -45,7 +46,8 @@ exports.addReceipt = (req, res) => {
             ReceiptId : receipt.id,
             name: req.body.name,
             price: req.body.price,
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            itemTotal:req.body.itemTotal
           })
 
         }
@@ -72,19 +74,25 @@ exports.readOne = (req, res) => {
 // print receipt
 exports.printReceipt = (req,res) => {
     (async () => {
-        const browser = await puppeteer.launch({
-          args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-          ]
-        })
-        const page = await browser.newPage()
-        const id = req.params.id
-        await page.goto('https://dentalms.herokuapp.com/receipts/'+id, {waitUntil: 'networkidle0'}) //receipts/:id/
-        const buffer = await page.pdf({format: 'A4'}) //configurations
-        res.type('application/pdf')
-        res.send(buffer)
-        browser.close()
+        try {
+          const browser = await puppeteer.launch({
+            args: [
+              '--no-sandbox',
+              '--disable-setuid-sandbox',
+            ]
+          })
+          const page = await browser.newPage()
+          const id = req.params.id
+          await page.goto('https://dentalms.herokuapp.com/receipts/'+id, {waitUntil: 'networkidle0'}) //receipts/:id/
+  
+          const buffer = await page.pdf({format: 'A4'}) //configurations
+          res.type('application/pdf')
+          res.send(buffer)
+          browser.close()
+        } catch (error) {
+          console.log(err)
+        }
+
     })()
 }
 
