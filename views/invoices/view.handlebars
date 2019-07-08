@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ invoice.date }}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
-    body {
-        font-family: 'Lato', sans-serif;
-        font-size: 16px;
-        font-weight: 300;
-    }
-    .container {
-        width: 90%;
-        margin: 0 auto;
-    }
-    .invoice-header, .invoice--heading, .footer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .invoice--heading {
-        border: 1px solid #ddd;
-        padding: 5px;
-    }
-    p {
-        margin: 0;
-    }
-    .item-row .item-name, .item-row .final-price, .item-row .final-quantity, .item-row .total {
-        border-bottom: none;
-        border-top: none;
-    }
-</style>
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .invoice-header,
+        .invoice--heading,
+        .footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .invoice--heading {
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .item-row .item-name,
+        .item-row .final-price,
+        .item-row .final-quantity,
+        .item-row .total {
+            border-bottom: none;
+            border-top: none;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
         <div class="invoice-header">
-                <div class="invoice--logo">
-                    <img src="/images/logo.png" alt="" style="width: 50%;">
-                </div>
-                <div>
-                    <h3>INVOICE</h3>
-                </div>
+            <div class="invoice--logo">
+                <img src="/images/logo.png" alt="" style="width: 50%;">
+            </div>
+            <div>
+                <h3>INVOICE</h3>
+            </div>
         </div> <br>
         <div class="invoice-header">
             <div class="invoice--logo">
@@ -51,8 +64,8 @@
                     <h6 style="margin: 0">Nairobi Branch</h6>
                     <p>Hurlingham, Argwings Kodhek Rd,</p>
                     <p>Chaka Court, Suite 5</p>
-                    <p>Tel: 0771 669 006</p> 
-                    <p>Mobile:  0725 289 986</p>
+                    <p>Tel: 0771 669 006</p>
+                    <p>Mobile: 0725 289 986</p>
                 </div>
             </div>
             <div>
@@ -60,8 +73,8 @@
                     <h6 style="margin: 0">Mombasa Branch</h6>
                     <p>Jubilee, Arcade No.28,</p>
                     <p>Mobile Avenue</p>
-                    <p>Tel: 0777 669 006</p> 
-                    <p>Mobile:  0725 669 006</p>
+                    <p>Tel: 0777 669 006</p>
+                    <p>Mobile: 0725 669 006</p>
                 </div>
             </div>
         </div><br>
@@ -87,7 +100,7 @@
                         </tr>
                         <tr>
                             <td class="meta-head">Patient Name:</td>
-                            <td>{{invoice.customer}}</td>
+                            <td>{{invoice.customername}}</td>
                         </tr>
                         <tr>
                             <td class="meta-head">Principal Member:</td>
@@ -111,21 +124,23 @@
                         <th>Total</th>
                     </tr>
                 </thead>
-                
+
                 <tbody class="item-body">
                     {{#each invoice.Items }}
-                        <tr class="item-row">
-                            <td class="item-name" style="">{{ name }}</td>
-                            <td class="final-price" style="">{{ price }}</td>
-                            <td class="final-quantity" style="">{{ quantity }}</td>
-                            <td class="total" style="">{{ itemTotal }}</td>
-                        </tr>
+                    <tr class="item-row">
+                        <td class="item-name" style="">{{ name }}</td>
+                        <td class="final-price" style="">{{ price }}</td>
+                        <td class="final-quantity" style="">{{ quantity }}</td>
+                        <td class="total" style="">{{ itemTotal }}</td>
+                    </tr>
                     {{/each}}
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="3" class="total-line">Net Total</td>
-                        <td class="total-value"><div id="total">{{ invoice.total }}</div></td>
+                        <td class="total-value">
+                            <div id="total">{{ invoice.total }}</div>
+                        </td>
                     </tr>
                 </tfoot>
             </table>
@@ -135,7 +150,9 @@
         </div>
         <br><br><br>
         <div>
-            <p>I, the (undersigned), being the patient/guardian, confirm use of the services listed on this invoice. I also confirm that i shall  be fully and severally liable for the hospital bills, if for any reason my insurance/employer declines to settle the bill amount.</p>
+            <p>I, the (undersigned), being the patient/guardian, confirm use of the services listed on this invoice. I
+                also confirm that i shall be fully and severally liable for the hospital bills, if for any reason my
+                insurance/employer declines to settle the bill amount.</p>
         </div>
         <br><br>
         <div class="footer">
@@ -144,4 +161,5 @@
         </div>
     </div>
 </body>
+
 </html>
