@@ -32,14 +32,14 @@
                     <tbody>
                         {{#each receipt}}
                             <tr>
-                                <td>MD/{{id}}/2019</td>
-                                <td>{{date}}</td>
-                                <td>{{customer}}</td>
-                                <td><span class="new badge blue" data-badge-caption="">{{paymentType}}</span></td>
-                                <td>{{total}}</td>
-                                <td><a href="/receipts/{{id}}/pdf" target="_blank" ><i class="material-icons">print</i> </a></td>
+                                <td>MD/{{dataValues.id}}/2019</td>
+                                <td>{{dataValues.date}}</td>
+                                <td>{{dataValues.customer}}</td>
+                                <td><span class="new badge blue" data-badge-caption="">{{dataValues.paymentType}}</span></td>
+                                <td>{{dataValues.total}}</td>
+                                <td><a href="/receipts/{{dataValues.id}}/pdf" target="_blank" ><i class="material-icons">print</i> </a></td>
                                 <td>
-                                    <a href="/receipts/edit/{{id}}" class="button"><i class="material-icons">edit</i></a>
+                                    <a href="/receipts/edit/{{dataValues.id}}" class="button"><i class="material-icons">edit</i></a>
                                 </td>
                             </tr>
                         {{/each}}
