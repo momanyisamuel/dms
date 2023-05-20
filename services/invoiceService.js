@@ -65,6 +65,7 @@ exports.readOne = (req, res) => {
         }]
    })
    .then( invoice => {
+        console.log(invoice)
         res.render('invoices/view', {
             invoice, layout: false
         })
