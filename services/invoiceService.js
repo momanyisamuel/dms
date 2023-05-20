@@ -4,8 +4,9 @@ const sequelize = require('sequelize');
 
 
 exports.showInvoices = (req,res) => {
-    models.Invoice.findAll()
+    models.Invoice.findAll({attributes: { exclude: ['membershipNumber'] }})
     .then( invoice => {
+      console.log(invoice)
         res.render('invoices/invoice', {
             invoice
         })
