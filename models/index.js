@@ -6,12 +6,11 @@ require('dotenv').config();
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
-let sequelize;
-
-sequelize = new Sequelize(process.env.PROD_DB, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  dialect:  'postgres'
-});
+const sequelize = new Sequelize(`${process.env.DB_URL}`, {
+  dialectOptions: {
+    charset: 'utf8'
+  }});
+console.log(sequelize)
 fs
   .readdirSync(__dirname)
   .filter(file => {

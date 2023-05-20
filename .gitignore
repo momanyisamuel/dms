@@ -3,3 +3,4 @@ pastebin.js
 package-lock.json
 /ui/*
 /templates/*
+.env
