@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=development
+      - MYSQL_DATABASE=mysql://root:mysecretpassword@db:3306/dental
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysecretpassword
+      - MYSQL_DATABASE=dental

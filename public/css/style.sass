@@ -64,6 +64,10 @@ a
         .invoice-form
             padding: 0 40px
             width: 70%
+            .invoice-form-wrap
+                display: flex
+                flex-direction: column
+                gap:1em
         .invoice-options
             width: 30%
             padding: 0 40px
@@ -76,9 +80,14 @@ a
                     width: 100%
                 a
                     display: block
-.invoice-form--address, .option
+.invoice-form--address
     display: flex
-    justify-content: space-between
+    width: 100%
+    gap: 1em
+    .invoice-form--name
+        width: 50%
+    .invoice-form--date
+        width: 50%  
 .invoice-form--item
     display: flex
     justify-content: space-between

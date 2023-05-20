@@ -7,6 +7,7 @@ const passport = require('passport')
 router.get("/", (req, res) => res.render('login/index',{layout: false}));
 
 router.post('/login',(req,res,next) => {
+  console.log(req)
   passport.authenticate('local', { 
       successRedirect: '/invoices',
       failureRedirect: '/'

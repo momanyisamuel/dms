@@ -1,20 +1,20 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "invoice",
-    "host": "127.0.0.1",
+    "password": "",
+    "database": "dental",
+    "host": "db",
     "dialect": "mysql"
   },
   "test": {
-    "username": "postgres",
-    "password": null,
+    "username": "root",
+    "password": "",
     "database": "dental",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "host": "db",
+    "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres"
+    "use_env_variable": "MYSQL_DATABASE",
+    "dialect": "mysql"
   }
 }
